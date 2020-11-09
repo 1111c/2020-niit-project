@@ -144,6 +144,13 @@
                     , title: '用户数据表'
                     , totalRow: true
                     , limit: 6
+                    , page: {//支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                        //,curr: 5 //设定初始在第 5 页
+                        , groups: 1 //只显示 1 个连续页码
+                        , first: false //不显示首页
+                        , last: false //不显示尾页
+                    }
                     , cols: [//cols的field字段对应后台po的属性
                         [{type: 'checkbox', fixed: 'left'}
                             , {field: 'UName', width: '10%', title: '用户名'}
@@ -158,12 +165,9 @@
                     , page: true
 
                 });
-
-
                 // 修改头像
                 layui.use('upload', function () {
                     var $ = layui.jquery, upload = layui.upload;
-
                     //普通图片上传
                     var uploadInst = upload.render({
                         elem: '#test1upload'
@@ -184,7 +188,6 @@
                             //上传成功
                             var demoText = $('#demoTextupload');
                             demoText.html('<span style="color: #4cae4c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传成功</span>');
-
                             var fileupload = $(".image");
                             fileupload.attr("value", res.data.src);
                             console.log(fileupload.attr("value"));
@@ -199,12 +202,7 @@
                             });
                         }
                     });
-
-
                 });
-
-
-
                 //根据phone关键字查询
                 $('#queryRole').on('click', function () {
                     var find = document.getElementById("find").value;
@@ -214,8 +212,6 @@
                         where: {'userName': find}
                     })
                 });
-
-
                 form.on('submit(formDemo)', function (data) {
                     console.log(data);
                     $.ajax({
@@ -229,7 +225,7 @@
                                 layer.load(2);
                                 layer.msg("修改成功", {icon: 6});
                                 setTimeout(function () {
-                                    layer.closeAll();//关闭所有的弹出层
+                                    layer.closeAll(); //关闭所有的弹出层
                                     table.reload("Users");
                                 }, 1000);
                                 //加载层 - 风格
@@ -261,8 +257,6 @@
                     }
                     ;
                 });
-
-
                 //监听工具条
                 table.on('tool(test)', function (obj) {
                     var data = obj.data;
@@ -277,9 +271,6 @@
                         $("#isforbid").val(data.isforbid);
                         $("#isable").val(data.isable);
                         $("#rtime").val(data.rtime);
-
-
-
                         $("#UName").val(data.UName);
                         $("#UPicture1").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);
@@ -288,7 +279,6 @@
                         $("#UGender").val(data.UGender);
                         $("#UPassword").val(data.UPassword);
                         $('#UPicture1').attr('src', data.UPicture);
-
                         layer.open({
                             type: 1,
                             title: "查看个人信息",
@@ -308,7 +298,7 @@
                                     if (msg != null) {
                                         layer.msg("删除成功", {icon: 6});
                                         setTimeout(function () {
-                                            layer.closeAll();//关闭所有的弹出层
+                                            layer.closeAll(); //关闭所有的弹出层
                                         }, 1000);
                                         //加载层 - 风格
                                     } else {
@@ -322,7 +312,7 @@
                     } else if (obj.event === 'edit') {
                         $("#check").show();
                         $("#showImg").hide();
-                        $("#updateImg11").show(); 
+                        $("#updateImg11").show();
                         $("#UName").val(data.UName);
                         $("#UPicture").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);
@@ -331,7 +321,6 @@
                         $("#UGender").val(data.UGender);
                         $("#UPassword").val(data.UPassword);
                         $('#demo1upload').attr('src', data.UPicture);
- 
                         layer.open({
                             type: 1,
                             title: "修改个人信息",
@@ -340,7 +329,6 @@
                         });
                     }
                 });
-
             });
 
         </script>

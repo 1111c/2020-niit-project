@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="resources/layui/css/layui.css">
         <link rel="stylesheet" href="resources/css/reset.css">
         <link rel="stylesheet" href="resources/css/style.css">
+ 
         <script src="resources/js/jquery.js" type="text/javascript"></script>
         <script src="resources/layui/layui.js" type="text/javascript"></script>
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
@@ -28,10 +29,92 @@
             </div>
             <form  >
                 <input type="hidden" name="UNameLabel" value="房屋Id" id="select_value">
-                <input type="text" name="UName"  id="find" class="import" placeholder="请输入房屋Id">
+                <input type="text" name="UName"  id="find" class="import" >
                 <!--<input type="submit" value="搜   索" class="btn-search"   id="queryRole">-->
                 <div  class="layui-btn btn-search"  data-type="reload"  id="queryRole"  >搜   索</div> 
             </form>
+        </div>
+
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">售价</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[shoujia1]" title="80万以下" lay-skin="primary">
+                <input type="checkbox" name="like[shoujia2]" title="80-100万" lay-skin="primary">
+                <input type="checkbox" name="like[shoujia3]" title="100-150万" lay-skin="primary">
+                <input type="checkbox" name="like[shoujia4]" title="150-200万" lay-skin="primary">
+                <input type="checkbox" name="like[shoujia5]" title="200-300万" lay-skin="primary">
+                <input type="checkbox" name="like[shoujia5]" title="300-500万" lay-skin="primary">
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">房型</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[fangxing1]" title="一室" lay-skin="primary">
+                <input type="checkbox" name="like1[fangxing2]" title="两室" lay-skin="primary">
+                <input type="checkbox" name="like1[fangxing3]" title="三室" lay-skin="primary">
+                <input type="checkbox" name="like1[fangxing4]" title="四室" lay-skin="primary">
+                <input type="checkbox" name="like1[fangxing5]" title="四室以上" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">面积</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[1mianji1]" title="50㎡以下" lay-skin="primary">
+                <input type="checkbox" name="like1[mianji2]" title="50-70㎡" lay-skin="primary">
+                <input type="checkbox" name="like1[mianji3]" title="70-90㎡" lay-skin="primary">
+                <input type="checkbox" name="like1[mianji4]" title="90-110㎡" lay-skin="primary">
+                <input type="checkbox" name="like1[mianji5]" title="110-130㎡" lay-skin="primary">
+                <input type="checkbox" name="like1[mianji6]" title="130-150㎡" lay-skin="primary">
+
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">标签</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[biaoqian1]" title="必看好房" lay-skin="primary">
+                <input type="checkbox" name="like1[biaoqian2]" title="满五年" lay-skin="primary">
+                <input type="checkbox" name="like1[biaoqian3]" title="满两年" lay-skin="primary">
+                <input type="checkbox" name="like1[biaoqian4]" title="7日新上" lay-skin="primary">
+                <input type="checkbox" name="like1[biaoqian5]" title="随时看房" lay-skin="primary">
+
+
+            </div>
+        </div>      
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">朝向</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[chaoxiang1]" title="南北" lay-skin="primary">
+                <input type="checkbox" name="like1[chaoxiang2]" title="朝南" lay-skin="primary">
+                <input type="checkbox" name="like1[chaoxiang3]" title="朝北" lay-skin="primary">
+                <input type="checkbox" name="like1[chaoxiang4]" title="朝西" lay-skin="primary">
+                <input type="checkbox" name="like1[chaoxiang5]" title="朝东" lay-skin="primary">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">楼层</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[louceng1]" title="低楼层" lay-skin="primary">
+                <input type="checkbox" name="like1[louceng2]" title="中楼层" lay-skin="primary">
+                <input type="checkbox" name="like1[louceng3]" title="高楼层" lay-skin="primary">
+
+
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">楼龄</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like1[louling1]" title="5年以下" lay-skin="primary">
+                <input type="checkbox" name="like1[louling2]" title="10年以下" lay-skin="primary">
+                <input type="checkbox" name="like1[louling3]" title="15年以下" lay-skin="primary">
+                <input type="checkbox" name="like1[louling4]" title="20年以下" lay-skin="primary">
+                <input type="checkbox" name="like1[louling5]" title="20年以上" lay-skin="primary">
+
+
+            </div>
         </div>
 
         <!--       
@@ -40,7 +123,7 @@
                  </div>
         -->
 
-  <div class="layui-row" id="EditUser" style="display:none;">
+        <div class="layui-row" id="EditUser" style="display:none;">
             <div class="layui-col-md10">
                 <form accept-charset="UTF-8"   class="layui-form layui-from-pane"   id="updateUser"   >
 
@@ -93,36 +176,36 @@
                             <input type="text" name="Uno" id="Uno" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
                         </div>
                     </div> 
-                    
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">门牌号</label>
                         <div class="layui-input-block">
                             <input type="text" name="Gno" id="Gno" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
                         </div>
                     </div> 
-                    
-                     <div class="layui-form-item">
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">出租价格</label>
                         <div class="layui-input-block">
                             <input type="text" name="Hrentprice" id="Hrentprice" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
                         </div>
                     </div> 
-                    
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">房屋主人</label>
                         <div class="layui-input-block">
                             <input type="text" name="Howner" id="Howner" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
                         </div>
                     </div> 
-                    
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号</label>
                         <div class="layui-input-block">
                             <input type="text" name="Hphone" id="Hphone" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
                         </div>
                     </div> 
-                    
-                    
+
+
                     <input type="hidden"   name="Houseimg" value="111"/>
                     <input type="hidden"   name="Hcreatetime" value="2019/11/15"/>
                     <input type="hidden"   name="Hisrenting" value="否"/>
@@ -151,7 +234,7 @@
             </div>
         </div>
 
-        
+
         <br/><br/>
         <table class="layui-hide" id="Users" lay-filter="test"></table>
 
@@ -197,6 +280,13 @@
                     , title: '用户数据表'
                     , totalRow: true
                     , limit: 6
+                    , page: {//支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                                //,curr: 5 //设定初始在第 5 页
+                        , groups: 1 //只显示 1 个连续页码
+                        , first: false //不显示首页
+                        , last: false //不显示尾页
+                    }
                     , cols: [//cols的field字段对应后台po的属性
                         [{type: 'checkbox', fixed: 'left'}
                             , {field: 'hnumber', width: '10%', title: '房产号'}
@@ -210,7 +300,7 @@
                             , {field: 'hrentprice', width: '13%', title: '出租价格'}
                             , {field: 'howner', width: '13%', title: '房屋主人'}
                             , {field: 'hphone', width: '13%', title: '手机号'}
-                            , {field: 'houseimg', width: '13%', title: '图片'}
+                            // , {field: 'houseimg', width: '13%', title: '图片'}
                             , {field: 'hcreatetime', width: '13%', title: '录入时间'}
                             , {field: 'hisrenting', width: '13%', title: '是否租赁'}
                             , {field: 'hdescription', width: '13%', title: '房产描述'}
@@ -266,24 +356,24 @@
 
 
 
-               //根据phone关键字查询
+                //根据phone关键字查询
                 $('#queryRole').on('click', function () {
                     var find = document.getElementById("find").value;
-                    var selection = document.getElementById("select_value").value; 
-                     console.log(find);
-                     console.log('我是find');
-                     console.log('selection' +  selection );
+                    var selection = document.getElementById("select_value").value;
+                    console.log(find);
+                    console.log('我是find');
+                    console.log('selection' + selection);
                     table.reload('ReloadTable', {
                         page: {curr: 1},
                         type: 'POST',
-                        url: 'searchHouseByCity.do', 
+                        url: 'searchHouseByCity.do',
                         where: {
-                                UName:find,
-                                selection:selection
+                            UName: find,
+                            selection: selection
                         }
                     });
                     console.log('成功查询一个');
-                }); 
+                });
 
 
                 form.on('submit(formDemo)', function (data) {
@@ -338,17 +428,17 @@
                     var data = obj.data;
                     //查看
                     if (obj.event === 'detail') {
-                        
+
                         console.log(data);
                         $("#check").hide();
                         $("#showImg").show();
                         $("#updateImg").hide();
                         $("#updateImage11").hide();
-                        $("#Hnumber").val(data.hnumber);  
+                        $("#Hnumber").val(data.hnumber);
                         $('#Hpicture').attr('src', data.hpicture);
                         $("#Hcity").val(data.hcity);
                         $("#Hcname").val(data.hcname);
-                        $("#Harea").val(data.harea);  
+                        $("#Harea").val(data.harea);
                         $("#Lno").val(data.lno);
                         $("#Uno").val(data.uno);
                         $("#Gno").val(data.gno);
@@ -359,7 +449,7 @@
                         $("#Hcreatetime").val(data.hcreatetime);
                         $("#Hisrenting").val(data.hisrenting);
                         $("#Hdescription").val(data.hdescription);
-                       
+
                         layer.open({
                             type: 1,
                             title: "查看个人信息",
@@ -381,7 +471,7 @@
                                         setTimeout(function () {
                                             layer.closeAll();//关闭所有的弹出层
                                         }, 1000);
-                                     //   加载层 - 风格
+                                        //   加载层 - 风格
                                     } else {
                                         layer.msg("删除失败", {icon: 5});
                                     }
@@ -394,26 +484,26 @@
                         $("#check").show();
                         $("#showImg").show();
                         $("#updateImg11").show();
-                        
+
 //                        $("#check").hide(); 
 //                        $("#showImg").show();
 //                        $("#updateImg").hide();
 //                        $("#updateImage11").hide(); 
-                        $("#Hnumber").val(data.hnumber); 
-                        $('#Hpicture').attr('src', data.hpicture); 
-                        $("#Hcity").val(data.hcity); 
-                        $("#Hcname").val(data.hcname); 
-                        $("#Harea").val(data.harea); 
-                        $("#Lno").val(data.lno); 
+                        $("#Hnumber").val(data.hnumber);
+                        $('#Hpicture').attr('src', data.hpicture);
+                        $("#Hcity").val(data.hcity);
+                        $("#Hcname").val(data.hcname);
+                        $("#Harea").val(data.harea);
+                        $("#Lno").val(data.lno);
                         $("#Uno").val(data.uno);
-                        $("#Gno").val(data.gno); 
+                        $("#Gno").val(data.gno);
                         $("#Hrentprice").val(data.hrentprice);
                         $("#Howner").val(data.howner);
                         $("#Hphone").val(data.hphone);
-                        $("#Houseimg").val(data.houseimg); 
-                        $("#Hcreatetime").val(data.hcreatetime); 
-                        $("#Hisrenting").val(data.hisrenting); 
-                        $("#Hdescription").val(data.hdescription); 
+                        $("#Houseimg").val(data.houseimg);
+                        $("#Hcreatetime").val(data.hcreatetime);
+                        $("#Hisrenting").val(data.hisrenting);
+                        $("#Hdescription").val(data.hdescription);
                         layer.open({
                             type: 1,
                             title: "修改个人信息",

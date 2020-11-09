@@ -1,8 +1,4 @@
-<%-- 
-    Document   : OA_HouseList
-    Created on : 2019-11-19, 19:51:44
-    Author     : xiaowen
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,8 +41,7 @@
                             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 200}
                         ]]
                      * 
-                     */*/
-                    
+                     */ 
                     , cols: [[
                             {field: 'Hnumber', width: 100, title: '房产号', sort: true}
                             , {field: 'Hpicture', width: 100, title: '房产面积'}

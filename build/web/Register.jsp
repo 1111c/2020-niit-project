@@ -23,6 +23,7 @@
                         <div class="layui-tab-item layui-show" style="">
                             <form class="layui-form" action="register.do">
 
+                                <input type="hidden" name="Ustatus" value="用户" /> 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户昵称</label>
                                     <div class="layui-input-block">
@@ -92,6 +93,7 @@
                         </div>
                         <div class="layui-tab-item"> 
                             <form class="layui-form" action="register.do">
+                                 <input type="hidden" name="Ustatus" value="中介" /> 
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">中介昵称</label>
                                     <div class="layui-input-block">

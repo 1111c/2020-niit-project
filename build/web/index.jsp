@@ -5,51 +5,80 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>项目主页</title>
-    
-    <link rel="stylesheet" href="resources/layui/css/layui.css"> 
-    <style>
 
-        div.background{
-            width: 100%;
-            height: 640px;
-            background: url(resources/image/背景.jpg) no-repeat ;
-            border: 0;
-        }
+        <link rel="stylesheet" href="resources/layui/css/layui.css"> 
+        <script src="resources/js/jquery.js" type="text/javascript"></script>
+        <style>
 
-        div.transbox
-        {
-            width: 900px;
-            height: 110px;
-            margin:30px;
-            background-color: #ffffff;
-            border: 1px solid black;
-            /* for IE */
-            filter:alpha(opacity=60);
-            /* CSS3 standard */
-            margin: auto;
+            div.background{
+                width: 100%;
+                height: 640px;
+                background: url(resources/image/背景.jpg) no-repeat ;
+                border: 0;
+            }
 
-        }
+            div.transbox
+            {
+                width: 900px;
+                height: 110px;
+                margin:30px;
+                background-color: #ffffff;
+                border: 1px solid black;
+                /* for IE */
+                filter:alpha(opacity=60);
+                /* CSS3 standard */
+                margin: auto;
+
+            }
 
 
 
-    </style>
+        </style>
     </head>
     <body>
 
 
         <ul class="layui-nav"  style=" opacity: 0.8;border:none">
 
+            <% if (request.getSession().getAttribute("user") != null) {
+            %> 
             <li class="layui-nav-item" lay-unselect=""  style="float: right">
-                <a href="Login.do">登录</a>
+                <a href="signout.do">注销</a> 
+            </li> 
+            <li class="layui-nav-item" lay-unselect=""  style="float: right">
+                <a href="<%=request.getSession().getAttribute("to")%>">欢迎<%=request.getSession().getAttribute("UName")%></a> 
+            </li> 
+            <%}%>
 
+
+
+            <% if (request.getSession().getAttribute("user") == null) {
+            %>
+            <li class="layui-nav-item" lay-unselect=""  style="float: right">
+                <a href="Login.jsp">登录</a> 
+            </li>  
+
+
+
+            <li class="layui-nav-item" lay-unselect=""  style="float: right">
+                <a href="Register.jsp">注册</a> 
             </li>
-        </li>
-        <li class="layui-nav-item" lay-unselect=""  style="float: right">
-            <a href="Register.do">注册</a>
+            <%}%>
+            
+            <!--            <li class="layui-nav-item" lay-unselect=""  style="float: right">
+                            <a href="Login.do">登录</a>
+            
+                        </li> 
+                       <li class="layui-nav-item" lay-unselect=""  style="float: right">
+                        <a href="Register.do">注册</a>-->
 
         </li>
         <li class="layui-nav-item layui-this" style="float: right">
-            <a href="">工具</a>
+            <a href="javascript:;">工具</a> 
+            <dl class="layui-nav-child">
+                <dd><a href="houseprice.do">房价评估</a></dd>
+                <dd><a href="House.do">发布房源</a></dd> 
+            </dl>
         </li>
         <li class="layui-nav-item"style="float: right"><a href="">房价</a></li>
         <li class="layui-nav-item" style="float: right">
@@ -107,7 +136,7 @@
                         <table border="0">
                             <tr>
                                 <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入区域、商圈或小区名开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
+                                <td><button type="button" id="to" onclick="toSearch()" class="layui-btn">开始找房</button></td>
                             </tr>
                         </table>
 
@@ -116,7 +145,7 @@
                         <table border="0">
                             <tr>
                                 <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入楼盘名称开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
+                                <td><button type="button" id="to" onclick="toSearch()"  class="layui-btn"><a href="searchHouse">开始找房</a></button></td>
                             </tr>
                         </table>
                     </div>
@@ -124,7 +153,7 @@
                         <table border="0">
                             <tr>
                                 <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入区域、商圈或小区名开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
+                                <td><button type="button" id="to" onclick="toSearch()"   class="layui-btn">开始找房</button></td>
                             </tr>
                         </table>
                     </div>
@@ -132,7 +161,7 @@
                         <table border="0">
                             <tr>
                                 <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入小区名开始查找小区" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
+                                <td><button type="button" id="to" onclick="toSearch()" class="layui-btn">开始找房</button></td>
                             </tr>
                         </table>
                     </div>
@@ -140,7 +169,7 @@
                         <table border="0">
                             <tr>
                                 <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="房产知识有疑问？来搜搜看吧~" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
+                                <td><button type="button" id="to"  onclick="toSearch()"  class="layui-btn">开始找房</button></td>
                             </tr>
                         </table>
                     </div>
@@ -163,8 +192,8 @@
             <thead>
                 <tr>
                     <th><a href=""> <img src="resources/image/找二手房.png" style="margin-left: 150px"></a></th>
-                    <th><a href=""><img src="resources/image/房屋估价.png" style="margin-left: 150px"></a></th>
-                    <th><a href=""><img src="resources/image/地图找房.png" style="margin-left: 150px"></a></th>
+                    <th><a href=""> <img src="resources/image/房屋估价.png" style="margin-left: 150px"></a></th>
+                    <th><a href=""> <img src="resources/image/地图找房.png" style="margin-left: 150px"></a></th>
                 </tr> 
             </thead>
             <tbody>
@@ -198,12 +227,28 @@
 
             <table border="0" style="margin: 0px auto">
                 <tr>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70x;"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
+                    <td>
+                        <a href="ShowHouse_1.jsp" > 
+                            <img src="resources/image/I1.png" style="width:317px;height: 346px;margin-left: 70x;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="ShowHouse_2.jsp" > 
+                            <img src="resources/image/I2.png" style="width:317px;height: 346px;margin-left: 70px">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="ShowHouse_3.jsp" > 
+                            <img src="resources/image/I3.png" style="width:317px;height: 346px;margin-left: 70px">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="ShowHouse_4.jsp" > 
+                            <img src="resources/image/I4.png" style="width:317px;height: 346px;margin-left: 70px">
+                        </a>
+                    </td>
                 </tr>
-            </table>
+            </table> 
         </div>
 
         <div class="house2" style=" margin-top: 40px">
@@ -217,9 +262,9 @@
 
                 <table border="0" style="margin: 0px auto">
                     <tr>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150x;background-size: cover"></td>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150px;background-size: cover"></td>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150px;background-size: cover"></td>
+                        <td><img src="resources/image/community1.png" style="width:420px;height: 312px;margin-left: 150x;background-size: cover"></td>
+                        <td><img src="resources/image/community2.png" style="width:420px;height: 312px;margin-left: 150px;background-size: cover"></td>
+                        <td><img src="resources/image/community3.png" style="width:420px;height: 312px;margin-left: 150px;background-size: cover"></td>
 
                     </tr>
                 </table>
@@ -234,18 +279,14 @@
 
     <div class="layui-main layui-carousel" id="test10">
         <div carousel-item="">
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
+            <div><img src="resources/image/bottom1.png" ></div>
+            <div><img src="resources/image/bottom2.png" ></div>
+            <div><img src="resources/image/bottom3.png" ></div>
+            <div><img src="resources/image/bottom4.png" ></div>
+            <div><img src="resources/image/bottom5.png" ></div>
 
         </div>
     </div>
-
-
-
-
 
 
 
@@ -329,10 +370,22 @@
     </script>
     <script type="text/javascript">
         layui.use(['element'], function () {
-
+            
 
         })
     </script>
 
+    
+    <script>
+             
+            function toSearch() { 
+                 window.location.href = "SearchDemo.do";
+            }   
+           
+   </script>       
+
+
+    
+    
 </body>
 </html> 
