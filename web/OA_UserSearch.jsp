@@ -1,8 +1,4 @@
-<%-- 
-    Document   : OA_UserSearch
-    Created on : 2019-11-19, 15:39:20
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +16,7 @@
 
     </head>
     <body>
-        <div class="searchbox">
+<!--        <div class="searchbox">
             <div class="mod_select">
                 <div class="select_box">
                     <span class="select_txt">用户昵称</span>
@@ -35,10 +31,10 @@
             <form  >
                 <input type="hidden" name="UNameLabel" value="用户昵称" id="select_value">
                 <input type="text" name="UName"  id="find" class="import" placeholder="请输入用户昵称">
-                <!--<input type="submit" value="搜   索" class="btn-search"   id="queryRole">-->
+                <input type="submit" value="搜   索" class="btn-search"   id="queryRole">
                 <div  class="layui-btn btn-search"  data-type="reload"  id="queryRole"  >搜   索</div> 
             </form>
-        </div>
+        </div>-->
 
         <!--       
                  <div style="margin: -25px 20px;">

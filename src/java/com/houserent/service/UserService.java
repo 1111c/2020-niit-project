@@ -12,8 +12,8 @@ public interface UserService {
     
     User getOneByUserPhone( String Phone );
     /**
-     * 获取所有用户的列表 
-     */
+     * 获取所有用户的列表   
+     */ 
     List getUserList();
  
     /**

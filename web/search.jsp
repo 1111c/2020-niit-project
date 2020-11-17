@@ -10,7 +10,7 @@
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
         <link href="resources/layui/css/layui.css" rel="stylesheet" type="text/css"/>
 
-
+  
     </head>
 
     <body>

@@ -12,7 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;    
 
 @Repository
 public class HouseDAOImpl implements HouseDAO {
@@ -21,22 +21,27 @@ public class HouseDAOImpl implements HouseDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public void insert(House  house){        
+    public void insert(House house) {
         Session session = sessionFactory.getCurrentSession();
         //session.beginTransaction(); 
         session.save(house);
-        session.close(); 
+        session.close();
         //session.getTransaction().commit();  
     }
 
     @Override
-    public void update(House  house) {
-
+    public void update(House house) {
+        Session session = sessionFactory.openSession();//.getCurrentSession();
+        session.beginTransaction();
+        session.update(house);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public List<House> getAll() {
         Session session = sessionFactory.getCurrentSession();
+
         Query query = session.createQuery("from House");
         List list = query.list();
 //        session.close();
@@ -45,7 +50,13 @@ public class HouseDAOImpl implements HouseDAO {
 
     @Override
     public void deleteByHnumber(Integer Hnumber) {
-
+        House house = new House();
+        house.setHnumber(Hnumber);   //session必须根据数据库的主键删除       
+        System.out.println(Hnumber);
+        Session session = sessionFactory.openSession();
+        session.delete(house);
+        session.beginTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -55,6 +66,69 @@ public class HouseDAOImpl implements HouseDAO {
         House house = (House) session.get(House.class, Hnumber);
 //      session.close();
         return house;
+
+    }
+
+    @Override
+    public List<House> getOneByCity(String City) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from House where Hcity =:Hcity";
+        Query query = session.createQuery(hql);
+        query.setString("Hcity", City);
+        List<House> list = query.list();
+        //session.close();
+        System.out.println("我是查询的一个House");
+        return list; 
+    }
+
+    @Override
+    public House getOneByPicture(String Picture) {
+        Session session = sessionFactory.openSession();
+        System.out.println(Picture);
+        String hql = "from House where Hpicture =:Hpicture";
+        Query query = session.createQuery(hql);
+        query.setString("Hpicture", Picture);
+        List<House> list = query.list();
+        session.close();
+        System.out.println("我是查询的一个House");
+        System.out.println("Size:" + list.size());
+        if (list != null) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<House> getHouses(String textContext) {
+
+        Session session = sessionFactory.openSession();
+        System.out.println(textContext);
+        String hql = "from House where Hcity like:Hcity";
+        Query query = session.createQuery(hql);
+        query.setString("Hcity", textContext);
+        List<House> list = query.list();
+        
+        hql = "from House where Harea like:Harea";
+        query = session.createQuery(hql);
+        query.setString("Harea", textContext);
+        List<House> list2 = query.list();
+        
+        for( House house:list2 ){
+             list.add(house);
+        }
+        
+         hql = "from House where Hrentprice like:Hrentprice";
+        query = session.createQuery(hql);
+        query.setString("Hrentprice", textContext);
+        List<House> list3 = query.list();
+        
+        for(House house:list3 ){
+             list.add(house);
+        } 
+        session.close(); 
+        return list;
     }
 
 }

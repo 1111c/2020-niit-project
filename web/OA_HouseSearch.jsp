@@ -1,13 +1,8 @@
-<%-- 
-    Document   : OA_UserSearch
-    Created on : 2019-11-19, 15:39:20
-    Author     : xiaowen
---%>
-
+ 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head>  
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>OA_HouseSearch</title>
         <link rel="stylesheet" href="resources/layui/css/layui.css">

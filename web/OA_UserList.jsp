@@ -1,8 +1,4 @@
-<%-- 
-    Document   : UserList
-    Created on : 2019-11-19, 10:42:27
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,10 +14,7 @@
 
     </head>
     <body>
-        <!--        <div style="padding: 15px;">
-                <table class="layui-hide" id="test"></table>
-                </div>
-        -->
+    
 
         <div class="layui-row" id="EditUser" style="display:none;">
             <div class="layui-col-md10">
@@ -144,6 +137,13 @@
                     , title: '用户数据表'
                     , totalRow: true
                     , limit: 6
+                    , page: {//支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                        //,curr: 5 //设定初始在第 5 页
+                        , groups: 1 //只显示 1 个连续页码
+                        , first: false //不显示首页
+                        , last: false //不显示尾页
+                    }
                     , cols: [//cols的field字段对应后台po的属性
                         [{type: 'checkbox', fixed: 'left'}
                             , {field: 'UName', width: '10%', title: '用户名'}
@@ -158,12 +158,9 @@
                     , page: true
 
                 });
-
-
                 // 修改头像
                 layui.use('upload', function () {
                     var $ = layui.jquery, upload = layui.upload;
-
                     //普通图片上传
                     var uploadInst = upload.render({
                         elem: '#test1upload'
@@ -184,7 +181,6 @@
                             //上传成功
                             var demoText = $('#demoTextupload');
                             demoText.html('<span style="color: #4cae4c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传成功</span>');
-
                             var fileupload = $(".image");
                             fileupload.attr("value", res.data.src);
                             console.log(fileupload.attr("value"));
@@ -199,12 +195,7 @@
                             });
                         }
                     });
-
-
                 });
-
-
-
                 //根据phone关键字查询
                 $('#queryRole').on('click', function () {
                     var find = document.getElementById("find").value;
@@ -214,8 +205,6 @@
                         where: {'userName': find}
                     })
                 });
-
-
                 form.on('submit(formDemo)', function (data) {
                     console.log(data);
                     $.ajax({
@@ -229,7 +218,7 @@
                                 layer.load(2);
                                 layer.msg("修改成功", {icon: 6});
                                 setTimeout(function () {
-                                    layer.closeAll();//关闭所有的弹出层
+                                    layer.closeAll(); //关闭所有的弹出层
                                     table.reload("Users");
                                 }, 1000);
                                 //加载层 - 风格
@@ -261,8 +250,6 @@
                     }
                     ;
                 });
-
-
                 //监听工具条
                 table.on('tool(test)', function (obj) {
                     var data = obj.data;
@@ -277,9 +264,6 @@
                         $("#isforbid").val(data.isforbid);
                         $("#isable").val(data.isable);
                         $("#rtime").val(data.rtime);
-
-
-
                         $("#UName").val(data.UName);
                         $("#UPicture1").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);
@@ -288,7 +272,6 @@
                         $("#UGender").val(data.UGender);
                         $("#UPassword").val(data.UPassword);
                         $('#UPicture1').attr('src', data.UPicture);
-
                         layer.open({
                             type: 1,
                             title: "查看个人信息",
@@ -308,9 +291,9 @@
                                     if (msg != null) {
                                         layer.msg("删除成功", {icon: 6});
                                         setTimeout(function () {
-                                            layer.closeAll();//关闭所有的弹出层
+                                            layer.closeAll(); //关闭所有的弹出层
                                         }, 1000);
-                                        加载层 - 风格
+                                        //加载层 - 风格
                                     } else {
                                         layer.msg("删除失败", {icon: 5});
                                     }
@@ -323,18 +306,6 @@
                         $("#check").show();
                         $("#showImg").hide();
                         $("#updateImg11").show();
-                        // layer.alert('编辑行：<br>'+ JSON.stringify(obj.data.address))
-                        // alert(data.fname); 
-//                        $("#id").val(data.id);
-//                        $("#fname").val(data.fname);
-//                        $("#phone").val(data.phone);
-//                        $("#email").val(data.email);
-//                        $("#password").val(data.password);
-//                        $("#name").val(data.name);
-//                        $("#idcard").val(data.idcard);
-//                        $('#imgshow').attr('src', "/file/" + data.headimg);
-//                        $('#demo1').attr('src', "/file/" + data.headimg);
-//                        $("#introduce").val(data.introduce);
                         $("#UName").val(data.UName);
                         $("#UPicture").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);
@@ -343,8 +314,6 @@
                         $("#UGender").val(data.UGender);
                         $("#UPassword").val(data.UPassword);
                         $('#demo1upload').attr('src', data.UPicture);
-
-
                         layer.open({
                             type: 1,
                             title: "修改个人信息",
@@ -353,40 +322,10 @@
                         });
                     }
                 });
-
             });
 
         </script>
 
-
-        <!--          
-        <script src="resources/layui/layui.js" charset="utf-8"></script> 
-        <script>
-        layui.use('table', function(){
-          var table = layui.table;
-          
-          table.render({
-            elem: '#test'
-            ,url:'resources/users.json'
-            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-              layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-              //,curr: 5 //设定初始在第 5 页
-              ,groups: 1 //只显示 1 个连续页码
-              ,first: false //不显示首页
-              ,last: false //不显示尾页
-              
-            }
-            ,cols: [[
-              {field: 'uname', width: 100, title: '用户昵称'}
-                                    , {field: 'usex', width: 80, title: '性别', sort: true}
-                                    , {field: 'uphone', width: 80, title: '电话'}
-                                    , {field: 'uemail', title: '邮箱', minWidth: 150}
-                                    , {field: 'udate', width: 120, title: '出生日期', sort: true}
-                                    , {field: 'upassword', width: 135, title: '密码'}
-            ]]
-            
-          });
-        });
-        </script>-->
+ 
     </body>
 </html>

@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Id;   
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -31,7 +31,7 @@ public class House implements Serializable {
     private String Lno;           //楼号 
     private String Uno;           //单元号
     private String Gno;           //Gno门牌号 
-    private Float Hrentprice;	 //出租价格
+    private Float Hrentprice;	  //出租价格
     private String Howner;        //房屋主人
     private String Hphone;        //手机号 
     private String Houseimg;      //房产图片 
@@ -64,7 +64,7 @@ public class House implements Serializable {
     
     
     public Integer getHnumber() {
-        return Hnumber;
+        return  Hnumber;
     }
 
     public void setHnumber(Integer Hnumber) {

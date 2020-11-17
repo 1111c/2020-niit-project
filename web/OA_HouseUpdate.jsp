@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>OA_HouseUpdate.jsp</title>
         <link rel="stylesheet" href="resources/layui/css/layui.css">
-    </head>
+    </head>  
     <body>
         <div style="padding: 15px;">
                     <div style="padding: 15px;">

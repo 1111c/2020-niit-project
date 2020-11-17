@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,14 +12,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author 52976
- */
 @Service
 public class HouseServiceImpl implements  HouseService{
 
-    @Autowired
+    @Autowired 
     private HouseDAO dao;
 
     
@@ -46,6 +42,21 @@ public class HouseServiceImpl implements  HouseService{
     @Override
     public void deleteHouse(Integer Hnumber) {
         dao.deleteByHnumber(Hnumber);
+    }
+
+    @Override
+    public List<House>  getHouseByCity(String Hcity) {
+           return dao.getOneByCity(Hcity);
+    }
+
+    @Override
+    public House getHouseByHpicture(String Picture) {
+           return dao.getOneByPicture(Picture);
+    }
+
+    @Override
+    public List getHouses(String textContext) {
+           return dao.getHouses(textContext);
     }
     
 }

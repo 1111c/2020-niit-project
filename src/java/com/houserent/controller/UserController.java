@@ -1,17 +1,20 @@
-package com.houserent.controller; 
+package com.houserent.controller;
+
 import com.houserent.pojo.User;
 import com.houserent.service.UserService;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.HashMap;   
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.UUID; 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
@@ -40,6 +43,11 @@ public class UserController {
         System.out.println(user.getUPicture());
         userService.addUser(user);
         return "Login";
+    }
+
+    @RequestMapping("/adminPage.do")
+    public String toAdmin(HttpServletRequest request, HttpServletResponse response) {
+        return "OpenrsAdmin";
     }
 
     @RequestMapping(value = "/updateUser.do", method = RequestMethod.POST)
@@ -79,6 +87,7 @@ public class UserController {
         //用json来传值
         JSONArray json = JSONArray.fromObject(ulist);
         String js = json.toString();
+
         //*****转为layui需要的json格式，必须要这一步，博主也是没写这一步，在页面上数据就是数据接口异常
         String jso = "{\"code\":0,\"msg\":\"\",\"count\":" + count + ",\"data\":" + js + "}";
         return jso;
@@ -91,7 +100,6 @@ public class UserController {
             @RequestParam(value = "UName") String UName, @RequestParam(value = "selection") String selection
     ) {
         System.out.println(selection);
-
         User user = null;
         if (selection.equals("用户昵称")) {
             user = userService.getUserByUserName(UName);
@@ -100,7 +108,6 @@ public class UserController {
         } else if (selection.equals("用户邮箱")) {
             user = userService.getOneByUserEmail(UName);
         }
-
         //带参数从数据库里查询出来放到ulist的集合里
         System.out.println("userName: " + UName);
         List<User> ulist = new LinkedList<>();
@@ -116,13 +123,22 @@ public class UserController {
 
     @RequestMapping("/searchAll.do")
     @ResponseBody
-    public String searchAll() {
+    public String searchAll(
+            @RequestParam(value = "page") int page, @RequestParam(value = "limit") int limit
+    ) {
         //带参数从数据库里查询出来放到ulist的集合里
         List<User> ulist = userService.getUserList();
+
+        List<User> uulist = new ArrayList<>();
+
+        for (int i = (page - 1) * limit; i < page * limit && i < ulist.size(); i++) {
+            uulist.add(ulist.get(i));
+        }
         int count = ulist.size();
         //用json来传值
-        JSONArray json = JSONArray.fromObject(ulist);
+        JSONArray json = JSONArray.fromObject(uulist);
         String js = json.toString();
+        System.out.println(js);
         //*****转为layui需要的json格式，必须要这一步，博主也是没写这一步，在页面上数据就是数据接口异常
         String jso = "{\"code\":0,\"msg\":\"\",\"count\":" + count + ",\"data\":" + js + "}";
         return jso;
@@ -131,19 +147,40 @@ public class UserController {
     // 登录的主要作用： 验证登录信息
     // 登陆验证的请求 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String volidateLogin(String status, String userName, String userPsw, Model model) {
-        model.addAttribute("status", status);
+    public String volidateLogin(String status, String userName, String userPsw, Model model,
+            HttpServletRequest request, HttpServletResponse response
+    ) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         User user = userService.validateLogin(userName, userPsw);
+        
         if (user == null) {
+            System.out.println("登录失败！！！");
             return "fail";
-        } else {
-            model.addAttribute("user", user);
-            if (status.equals("普通用户")) {
-                return "OpenrsAdmin";
-            } else {
-                return "OpenrsAdmin";
-            }
         }
+        
+        request.getSession().setAttribute("UImage", user.getUPicture());
+        
+        System.out.println("我是登录的时候的打印：" +user.getUName() + "    " + user.getUGender());
+        request.getSession().setAttribute("user", user);
+        request.getSession().setAttribute("UName", user.getUName());
+        request.getSession().setAttribute("UImage", user.getUPicture());
+
+        model.addAttribute("status", status);
+        //model.addAttribute("request", request);
+
+        System.out.println(status + "   Ustatus : " + user.getUstatus());
+        
+        model.addAttribute("user", user);
+        if (status.equals("1") &&  user.getUstatus().equals("用户") ||
+            status.equals("1") &&  user.getUstatus().equals("中介") ) {
+            request.getSession().setAttribute("to", "UserZone.do");
+            return "UserZone";
+        } else if (status.equals("2") && user.getUstatus().equals("管理员")) {
+            request.getSession().setAttribute("to", "OpenrsAdmin.do");
+            return "OpenrsAdmin";
+        }
+        return "fail";
     }
 
     //图片上传测试
@@ -163,16 +200,15 @@ public class UserController {
                 prefix = originalName.substring(originalName.lastIndexOf(".") + 1);
                 Date date = new Date();
                 String uuid = UUID.randomUUID() + "";
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                dateStr = simpleDateFormat.format(date);
-                //String filepath = "D:\\mycode\\LayUiTest\\src\\main\\resources\\static\\images\\" + dateStr + "\\" + uuid + "." + prefix;
-//                System.out.println("classpath:" + ResourceUtils.getURL("classpath:").getPath());
-//                //项目所在源包路径
-//                String locationpath = ResourceUtils.getURL("classpath:").getPath();
-//                System.out.println(locationpath);
-//                 
-                String filepath = "C:\\Users\\52976\\Desktop\\2019下学期项目\\MyProject\\HouseRent\\web\\uploadImage\\" + uuid + "." + prefix;
+                 
+                //项目所在源包路径
+                String locationpath = ResourceUtils.getURL("classpath:").getPath();
+                System.out.println(locationpath);
 
+                int index = locationpath.indexOf("build");
+                locationpath = locationpath.substring(1,index);
+                
+                String filepath = locationpath + "web\\uploadImage\\" + uuid + "." + prefix;
                 File files = new File(filepath);
                 //打印查看上传路径
                 System.out.println(filepath);

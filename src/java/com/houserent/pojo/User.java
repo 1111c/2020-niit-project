@@ -12,13 +12,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
-
+public class User implements Serializable {  
+ 
     @Id
     @GeneratedValue(generator = "pkAssigned")
     @GenericGenerator(name="pkAssigned",strategy = "assigned")
     String UName;
 
+    String Ustatus;
     String UPicture;
     String UPhone;
     String UEmail;
@@ -47,6 +48,17 @@ public class User implements Serializable {
         this.UName = UName;
     }
 
+    public String getUstatus() {
+        return Ustatus;
+    }
+
+    public void setUstatus(String Ustatus) {
+        this.Ustatus = Ustatus;
+    }
+
+    
+    
+    
     public String getUPicture() {
         return UPicture;
     }

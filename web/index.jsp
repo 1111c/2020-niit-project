@@ -5,334 +5,762 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>项目主页</title>
-    
-    <link rel="stylesheet" href="resources/layui/css/layui.css"> 
-    <style>
-
-        div.background{
-            width: 100%;
-            height: 640px;
-            background: url(resources/image/背景.jpg) no-repeat ;
-            border: 0;
-        }
-
-        div.transbox
-        {
-            width: 900px;
-            height: 110px;
-            margin:30px;
-            background-color: #ffffff;
-            border: 1px solid black;
-            /* for IE */
-            filter:alpha(opacity=60);
-            /* CSS3 standard */
-            margin: auto;
-
-        }
-
-
-
-    </style>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+	<!-- 首页轮播图样式 -->
+	<link type="text/css" href="css/slider-pro.css" rel="stylesheet"> 
+	<link type="text/css" href="css/htmleaf-demo.css" rel="stylesheet">  
+	<link type="text/css" href="css/examples.css" rel="stylesheet">  
+	<link type="text/css" href="css/normalize.css" rel="stylesheet">  
+	<link type="text/css" href="fancybox/jquery.fancybox.css" rel="stylesheet"> 
+	<!-- 首页菜单栏选项卡样式 -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootsnav.css">
+	<!-- font-awesome.css为菜单栏选项卡倒三角下标，需引用官网的样式 -->
+	<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!-- 页尾小icon的样式 -->
+    <link type="text/css" href="css/pe-icon-7-stroke.css" rel="stylesheet">
+	<!-- 首页菜单栏选项卡JS -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- 首页轮播图JS -->
+	<script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery.sliderPro.js"></script> 
     </head>
     <body>
+<div class="top">  <!-- 图标  字体  小控件 -->
+	<!-- 头部 -->
 
+		<div class="top_left">
+		<a href="index.html">
+			<img alt="logo" src="pic/logo.png">
+		</a>
+		</div>
 
-        <ul class="layui-nav"  style=" opacity: 0.8;border:none">
-
-            <li class="layui-nav-item" lay-unselect=""  style="float: right">
-                <a href="Login.do">登录</a>
-
-            </li>
-        </li>
-        <li class="layui-nav-item" lay-unselect=""  style="float: right">
-            <a href="Register.do">注册</a>
-
-        </li>
-        <li class="layui-nav-item layui-this" style="float: right">
-            <a href="">工具</a>
-        </li>
-        <li class="layui-nav-item"style="float: right"><a href="">房价</a></li>
-        <li class="layui-nav-item" style="float: right">
-            <a href="javascript:;">指南</a>
-            <dl class="layui-nav-child">
-                <dd><a href="">问答</a></dd>
-                <dd><a href="">百科</a></dd>
-
-            </dl>
-        </li>
-        <li class="layui-nav-item" style="float: right">
-            <a href="">经纪人</a></li>
-        <li class="layui-nav-item"style="float: right">
-            <a href="">小区</a>
-        </li>
-        <li class="layui-nav-item" style="float: right">
-            <a href="">商务办公</a></li>
-        <li class="layui-nav-item"style="float: right">
-            <a href="">海外</a>
-        </li>
-        <li class="layui-nav-item" style="float: right">
-            <a href="">租房</a></li>
-        <li class="layui-nav-item"style="float: right">
-            <a href="">新房</a>
-        </li>
-        <li class="layui-nav-item"style="float: right">
-            <a href="">二手房</a>
-        </li>
-
-    </ul>
-
-
-
-    <div class="background">
-        <br/> 
-
-        <div class="text" >
-
-            <p style=" color: #ffffff; text-align: center;font-size: 60px;margin-top: 170px">连接每个家的故事</p>
-            <br/>
+        <div class="qa-search-wrap-left">
+        <!-- 顶部搜索框 -->
+            <form class="comp-Searcher" id="qaNavSearcherForm" type="post" action="#">
+            <div class="ipt-wrap">
+							<input class="ipt" id="qaNavSearcherIpt" type="text" placeholder="请输入房源特征或房源标题...">
+            </div>
+            <button id="toSearch" class="right-icon" type="">
+							<i class="iconfont">搜&nbsp;&nbsp;索</i>
+            </button>
+            </form>
         </div>
 
-        <div class="transbox" style=" margin-top: 40px">
+		<div class="top_right">
+			<ul class="ul_son">
+					<li class="login" onclick="login()"><a id="login" href="Login.do">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></li>
+				<li class="registry" onclick="registry()"><a id="registry" href="Register.do">注&nbsp;&nbsp;&nbsp;&nbsp;册</a></li>
+			
+				<li class="userinfo"><a id="userinfo" style="display: none;" href="#">用户名</a></li>
+				<li class="exit" onclick="logout()"><a id="exit" style="display: none;">注&nbsp;&nbsp;&nbsp;&nbsp;销</a></li>
+			</ul>
+		</div>
+		<hr />	<!-- 分割线 -->
+	</div>
 
-            <div class="layui-tab" >
-                <ul class="layui-tab-title">
-                    <li class="layui-this">找二手房</li>
-                    <li>找新房</li>
-                    <li>找租房</li>
-                    <li>找小区</li>
-                    <li>搜问答</li>
-                </ul>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <table border="0">
-                            <tr>
-                                <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入区域、商圈或小区名开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
-                            </tr>
-                        </table>
 
+	<!-- 菜单导航栏，支持下拉 -->
+	<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default navbar-mobile bootsnav on">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                    	<!-- Slide 1 -->
+                        <li><a href="index.html" data-hover="Home">首页</a></li>
+                    	<!-- Slide 2 -->
+                        <li><a href="House.do" data-hover="About">新房发布</a></li>
+                        <!-- Slide 3 -->
+                          
+                        <!-- Slide 4 -->
+                        <!-- <li><a href="recommend.html" data-hover="Contact">爆款推荐</a></li> -->
+                            
+                        <!-- Slide 5 -->
+                        <li><a href="search.html" data-hover="Portfolio">房屋搜索</a></li>
+                      <!-- Slide 7 -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Pages">更多</a>
+                           
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+    
+	<!-- 轮播图 -->
+	<div id="example3" class="slider-pro">
+		<div class="slider-pro" id="my-slider">
+		  <div class="sp-slides">
+		  	<!-- 轮播图主体上部 -->
+		    	<!-- Slide 1 -->
+			    <div class="sp-slide">
+			       <img class="sp-image" src="pic/a - 副本.jpg"/>
+			    </div>
+			     
+			    <!-- Slide 2 -->
+			    <div class="sp-slide">
+			      <img class="sp-image" src="pic/b - 副本.jpg"/>
+			    </div>
+			     
+			    <!-- Slide 3 -->
+			    <div class="sp-slide">
+			      <img class="sp-image" src="pic/c - 副本.jpg"/>
+			    </div>
+
+			    <!-- Slide 4 -->
+			    <div class="sp-slide">
+			      <img class="sp-image" src="pic/d - 副本.jpg"/>
+			    </div>
+
+				<!-- Slide 5 -->
+			    <div class="sp-slide">
+			      <img class="sp-image" src="pic/e - 副本.jpg"/>
+			    </div>
+
+				<!-- Slide 6 -->
+			    <div class="sp-slide">
+			      <img class="sp-image" src="pic/f - 副本.jpg"/>
+			    </div>
+		  </div>
+			<div class="sp-thumbnails">
+				<!-- 轮播图主体下部 -->
+					<img class="sp-thumbnail" src="pic/a - 副本.jpg"/>
+					<img class="sp-thumbnail" src="pic/b - 副本.jpg"/>
+					<img class="sp-thumbnail" src="pic/c - 副本.jpg"/>
+					<img class="sp-thumbnail" src="pic/d - 副本.jpg"/>
+					<img class="sp-thumbnail" src="pic/e - 副本.jpg"/>
+					<img class="sp-thumbnail" src="pic/f - 副本.jpg"/>
+			</div>
+		</div>
+	</div>
+
+    <!-- col-xs-12表示最小宽度占12格 -->
+    <!-- 可以直接用row，column来扩充行与列 -->
+    <!-- 房屋盒子 -->
+       <!--  <div class="container  col-xs-12">
+            <div class="row">
+                <div class="col-xs-4 house-box">
+                    111
+                </div>
+                <div class="col-xs-4 house-box">
+                    222
+                </div>
+                <div class="col-xs-4 house-box">
+                    333
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 house-box">
+                    444
+                </div>
+                <div class="col-xs-4 house-box">
+                    555
+                </div>
+                <div class="col-xs-4 house-box">
+                    666
+                </div>
+            </div>
+        </div> -->
+
+<div class="features-area bg-img-1 black-opacity">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="features-wrap">
+                    <i class="fa fa-heart-o"></i>
+                    <h2>贴心的服务</h2>
+                    <p>这里能提供让你满意的温馨如家的满意</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="features-wrap">
+                    <i class="fa fa-home"></i>
+                    <h2>多元化的管理</h2>
+                    <p>专业的团队可以赋予你房子无限的想象</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="features-wrap">
+                    <i class="fa fa-cogs"></i>
+                    <h2>庞大的产业链</h2>
+                    <p>用户的数量增加带来了未来更多的可能</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 最新发布 -->
+<div id="newPublish" class="service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <h2>最新发布</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row newPublish">
+            <!-- <div class="col-lg-4 col-md-6 col-12">
+                <div class="service-wrap">
+                    <div class="service-img">
+                        <a href="detail.html">
+                            <img src="pic/2 - 副本.jpg" alt="" data-no-retina="">
+                        </a>
+                        <ul>
+                            <li>
+                                <span class="rent">For Rant</span>
+                            </li>
+                            <li>
+                                <p>$13,000 / <span>month</span></p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="layui-tab-item">
-                        <table border="0">
-                            <tr>
-                                <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入楼盘名称开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="layui-tab-item">
-                        <table border="0">
-                            <tr>
-                                <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入区域、商圈或小区名开始找房" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="layui-tab-item">
-                        <table border="0">
-                            <tr>
-                                <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入小区名开始查找小区" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="layui-tab-item">
-                        <table border="0">
-                            <tr>
-                                <td><input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="房产知识有疑问？来搜搜看吧~" class="layui-input" style="width:700px"></td>
-                                <td><button type="button" class="layui-btn">开始找房</button></td>
-                            </tr>
-                        </table>
+                    <div class="service-content">
+                        <h3>The Old Rectory</h3>
+                        <span>Little Havana / Miami</span>
+                        <p>There are many variations of passages of the Lorem Ipsum available .</p>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span><i class="fa fa-object-group"></i>100 ft2</span>
+                            </div>
+                            <div class="col-xs-7">
+                                <ul class="d-flex meta">
+                                    <li>3 <i class="fa fa-bed"></i></li>
+                                    <li>4 <i class="fa fa-bath"></i></li>
+                                    <li>6 <i class="fa fa-car"></i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+                <div class="service-wrap">
+                    <div class="service-img">
+                        <a href="detail.html">
+                            <img src="pic/3 - 副本.jpg" alt="" data-no-retina="">
+                        </a>
+                        <ul>
+                            <li>
+                                <span class="rent">For Rant</span>
+                            </li>
+                            <li>
+                                <p>$20,000 / <span>month</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-content">
+                        <h3>The Old School</h3>
+                        <span>Little Havana / Miami</span>
+                        <p>There are many variations of passages of the Lorem Ipsum available .</p>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span><i class="fa fa-object-group"></i>100 ft2</span>
+                            </div>
+                            <div class="col-xs-7">
+                                <ul class="d-flex meta">
+                                    <li>3 <i class="fa fa-bed"></i></li>
+                                    <li>4 <i class="fa fa-bath"></i></li>
+                                    <li>6 <i class="fa fa-car"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+                <div class="service-wrap">
+                    <div class="service-img">
+                        <a href="detail.html">
+                            <img src="pic/4 - 副本.jpg" alt="" data-no-retina="">
+                        </a>
+                        <ul>
+                            <li>
+                                <span class="rent">For Rant</span></li>
+                                <li>
+                                    <p>$15,000 / <span>month</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="service-content">
+                            <h3>The Old School</h3>
+                            <span>Little Havana / Miami</span>
+                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
+                                </div>
+                                <div class="col-xs-7">
+                                    <ul class="d-flex meta">
+                                        <li>3 <i class="fa fa-bed"></i></li>
+                                        <li>4 <i class="fa fa-bath"></i></li>
+                                        <li>6 <i class="fa fa-car"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+                    <div class="service-wrap">
+                        <div class="service-img">
+                            <a href="detail.html">
+                                <img src="pic/5 - 副本.jpg" alt="" data-no-retina="">
+                            </a>
+                            <ul>
+                                <li>
+                                    <span class="rent">For Rant</span>
+                                </li>
+                                <li>
+                                    <p>$12,000 / <span>month</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="service-content">
+                            <h3>The Hillside House</h3>
+                            <span>Little Havana / Miami</span>
+                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
+                                </div>
+                                <div class="col-xs-7">
+                                    <ul class="d-flex meta">
+                                        <li>3 <i class="fa fa-bed"></i></li>
+                                        <li>4 <i class="fa fa-bath"></i></li>
+                                        <li>6 <i class="fa fa-car"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+                    <div class="service-wrap">
+                        <div class="service-img">
+                            <a href="detail.html">
+                                <img src="pic/1 - 副本.jpg" alt="" data-no-retina="">
+                            </a>
+                            <ul>
+                                <li>
+                                    <span class="rent">For Rant</span>
+                                </li>
+                                <li>
+                                    <p>$5,000 / <span>month</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="service-content">
+                            <h3>The Holly Cottage</h3>
+                            <span>Little Havana / Miami</span>
+                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
+                                </div>
+                                <div class="col-xs-7">
+                                    <ul class="d-flex meta">
+                                        <li>3 <i class="fa fa-bed"></i></li>
+                                        <li>4 <i class="fa fa-bath"></i></li>
+                                        <li>6 <i class="fa fa-car"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</div> -->
+        </div>
+        </div>
+    </div>
 
+
+
+<!-- 优秀房东们 -->
+<div class="team-area bg-img-2" style="height: auto;">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+					<div class="section-title text-center section-title2">
+                        <h2>房东推荐</h2>
+					</div>
+			</div>
+		</div>
+			<div id="recommend" class="row">
+					<!-- <div class="col-lg-4 col-sm-6 col-xs-12">
+							<div class="team-wrap">
+									<div class="team-img">
+											<a href="Landlord.html">
+													<img class="userImg" src="pic/human01.png" alt="" data-no-retina="">
+											</a>
+									</div>  
+									<div class="team-content">
+											<h3 class="landlordName">John Silver</h3>
+											<span>Founder &amp; CEO</span>
+											<p class="intro">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+											<ul class="d-flex socil-icon">
+													<li>
+															<a href="#"><i class="fa fa-facebook"></i></a>
+													</li>
+													<li>
+															<a href="#"><i class="fa fa-twitter"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-linkedin"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-google-plus"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-vimeo"></i></a>
+													</li>
+											</ul>
+									</div>
+							</div>
+					</div> -->
+					<!-- <div class="col-lg-4 col-sm-6 col-xs-12">
+							<div class="team-wrap">
+									<div class="team-img">
+											<a href="Landlord.html">
+													<img src="pic/human02.png" alt="" data-no-retina="">
+											</a>
+									</div>
+									<div class="team-content">
+											<h3>Janet Richmond</h3>
+											<span>Founder &amp; CEO</span>
+											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+											<ul class="d-flex socil-icon">
+													<li>
+															<a href="#"><i class="fa fa-facebook"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-twitter"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-linkedin"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-google-plus"></i></a>
+													</li>
+													<li><a href="#"><i class="fa fa-vimeo"></i></a>
+													</li>
+											</ul>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+							<div class="team-wrap">
+									<div class="team-img">
+											<a href="Landlord.html">
+													<img src="pic/human03.png" alt="" data-no-retina="">
+											</a>
+									</div>
+									<div class="team-content">
+											<h3>Andrew Man</h3>
+											<span>Founder &amp; CEO</span>
+											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+											<ul class="d-flex socil-icon">
+													<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+													<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+													<li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+											</ul>
+									</div>
+							</div>
+					</div> -->
+			</div>
+	</div>
+</div>
+
+<!-- 页尾 -->
+<div class="footer-area">
+    <div class=" footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="single-footer">
+                        <h4>关于我们 </h4>
+                        <div class="footer-title-line"></div>
+                        <img src="pic/logo.png" alt="" class="wow pulse animated" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: pulse;">
+                        <p>良心企业 良心企业 良心企业 良心企业 良心企业 良心企业 良心企业 良心企业 </p>
+                        <ul class="footer-adress">
+                            <li><i class="pe-7s-map-marker strong"> </i>山东省青岛市</li>
+                            <li><i class="pe-7s-mail strong"> </i> email@qdu.com</li>
+                            <li><i class="pe-7s-call strong"> </i> +1 234 567 891</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="single-footer">
+                        <h4>快速导航 </h4>
+                        <div class="footer-title-line"></div>
+                        <ul class="footer-menu">
+                            <li><a href="#">新房发布</a>  </li> 
+                            <li><a href="area.html">地区选择--天河区</a>  </li> 
+                            <li><a href="#">联系我们 </a></li> 
+                            <li><a href="#">房屋搜索</a></li> 
+                            <li><a href="personal-infor.html">个人中心</a>  </li> 
+                            <li><a href="#">我的收藏 </a>  </li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="single-footer">
+                        <h4>最新发布</h4>
+                        <div class="footer-title-line"></div>
+                        <ul class="footer-blog">
+                            <li>
+                                <div class="col-md-4 col-sm-4 col-xs-4 blg-thumb p0">
+                                    <a href="detail.html">
+                                        <img src="pic/small-pic.jpg">
+                                    </a>
+                                    <span class="blg-date">12-12-2019</span>
+
+                                </div>
+                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
+                                    <h6> <a href="detail.html">番禺区笋盘 </a></h6> 
+                                    <p style="line-height: 17px; padding: 8px 2px;">棒棒哒的房子 棒棒哒</p>
+                                </div>
+                            </li> 
+
+                            <li>
+                                <div class="col-md-4 col-sm-4 col-xs-4 blg-thumb p0">
+                                    <a href="detail.html">
+                                        <img src="pic/small-pic.jpg">
+                                    </a>
+                                    <span class="blg-date">12-12-2019</span>
+
+                                </div>
+                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
+                                    <h6> <a href="detail.html">番禺区笋盘 </a></h6> 
+                                    <p style="line-height: 17px; padding: 8px 2px;">棒棒哒的房子 棒棒哒</p>
+                                </div>
+                            </li> 
+
+                            <li>
+                                <div class="col-md-4 col-sm-4 col-xs-4 blg-thumb p0">
+                                    <a href="detail.html">
+                                        <img src="pic/small-pic.jpg">
+                                    </a>
+                                    <span class="blg-date">12-12-2019</span>
+
+                                </div>
+                                <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
+                                    <h6> <a href="detail.html">番禺区笋盘 </a></h6> 
+                                    <p style="line-height: 17px; padding: 8px 2px;">棒棒哒的房子 棒棒哒</p>
+                                </div>
+                            </li> 
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="single-footer news-letter">
+                        <h4>反馈＆分享</h4>
+                        <div class="footer-title-line"></div>
+                        <p>亲们，可以在此留下你们的意见＆建议~</p>
+
+                        <form>
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="E-mail ... ">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary subscribe" type="button">
+                                        <i class="pe-7s-paper-plane pe-2x"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </form> 
+
+                        <div class="social pull-right"> 
+                            <ul>
+                                <li>
+                                    <a class="wow fadeInUp animated animated" href="https://twitter.com/kimarotec" style="visibility: visible; animation-name: fadeInUp;">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="wow fadeInUp animated animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="wow fadeInUp animated animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="wow fadeInUp animated animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="wow fadeInUp animated animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
-
-
-    </div> 
-    <div classs="image">
-
-        <table class="layui-table" lay-even lay-skin="nob" lay-size="lg">
-            <colgroup>
-                <col width="300">
-                <col width="300">
-                <col width="300">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th><a href=""> <img src="resources/image/找二手房.png" style="margin-left: 150px"></a></th>
-                    <th><a href=""><img src="resources/image/房屋估价.png" style="margin-left: 150px"></a></th>
-                    <th><a href=""><img src="resources/image/地图找房.png" style="margin-left: 150px"></a></th>
-                </tr> 
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b style="margin-left: 170px">找二手房</b></td>
-                    <td><b style="margin-left: 170px">房屋估价</b></td>
-                    <td><b style="margin-left: 170px">地图找房</b></td>
-
-                </tr>
-                <tr>
-                    <td><p style="margin-left: 80px">真实二手房源，承诺真实在售  所见即真</p></td>
-                    <td><p style="margin-left: 80px">基于海量成交数据，帮您合理定价预估市值</p></td>
-                    <td><p style="margin-left: 80px">为您精准定位，位置周边配置一览无余</p></td>
-                </tr>
-
-            </tbody>
-        </table> 
-
-    </div> 
-
-    <div class="house1" style=" margin-top: 40px">
-        <fieldset class="layui-elem-field layui-field-title">
-            <legend style="font-size: 40px"><b>二手好房</b>&nbsp;&nbsp;&nbsp;为你而选</legend>
-            <legend  style="font-size: 15px">好房源那么多，我们为你精选，我们会越来越懂你
-                <p style="float: right">
-                    <a href="#">更多</a>
-                </p>
-            </legend>
-        </fieldset>
-        <div class="Himg">
-
-            <table border="0" style="margin: 0px auto">
-                <tr>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70x;"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
-                    <td><img src="resources/image/" style="width:200px;height: 180px;margin-left: 70px"></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="house2" style=" margin-top: 40px">
-            <fieldset class="layui-elem-field layui-field-title">
-                <legend style="font-size: 40px"><b>小区</b>&nbsp;&nbsp;&nbsp;为您推荐</legend>
-                <legend  style="font-size: 15px">纵览小区，恋上这座城
-                    <p style="float: right"><a href="#">更多</a></p>
-                </legend>
-            </fieldset>
-            <div class="Himg2">
-
-                <table border="0" style="margin: 0px auto">
-                    <tr>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150x;background-size: cover"></td>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150px;background-size: cover"></td>
-                        <td><img src="resources/image/" style="width:300px;height: 180px;margin-left: 150px;background-size: cover"></td>
-
-                    </tr>
-                </table>
-            </div>
-
-        </div>
-
-    </div>
-    <br/>
-    <br/>
-    <br/>
-
-    <div class="layui-main layui-carousel" id="test10">
-        <div carousel-item="">
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-            <div><img src="resources/image/"></div>
-
         </div>
     </div>
+</div>
 
+<script type="text/javascript">
+	jQuery( document ).ready(function( $ ) {
+    $( '#my-slider' ).sliderPro();
+  }); 
 
+	FluentRevealEffect.applyEffect(".btn", {
+	  lightColor: "rgba(255,255,255,0.1)",
+	  gradientSize: 150
+	}) 
+</script>
+<script type="text/javascript" src="js/bootsnav.js"></script> 
+<script type="text/javascript" src="./js/business/login.js"></script> 
+<script src="./js/./business/util.js"></script>
+<script>
+	// 页面初始化数据
+	$(document).ready(function() {
+		$('#toSearch').click(() => { window.location.href = 'search.html' })
+		$('#qaNavSearcherIpt').focus(() => { window.location.href = 'search.html' })
 
+		const userInfo = JSON.parse(sessionStorage.getItem('user'))
+		console.log(userInfo, 'userInfo')
+		$('.userinfo').css({ 'display': 'none' })
+		$('.exit').css({ 'display': 'none' })
+		if (userInfo) { // 如果用户存在展示用户信息，调整样式
+			$('.login').css('display', 'none')
+			$('.registry').css('display', 'none')
+			$('.userinfo').text(`欢迎您：${userInfo.username}`)
+			$('.exit').text(`退出`)
+			$('.userinfo').css({ 'display': 'flex', 'white-space': 'nowrap', 'margin-right': '30px', 'width': 'auto', 'cursor': 'pointer' })
+			$('.exit').css({ 'display': 'flex', 'align-items': 'center', 'cursor': 'pointer','white-space': 'nowrap',  'font-size': '14px', 'color': '#777' })
+			$('.ul_son').css({ 'display': 'flex', 'align-items': 'center' })
+			$('.userinfo').click(() => {
+				window.location.href = 'personal-infor.html'
+			})
+		}
 
+		getHouseArea() // 房子地区数据初始化
 
+		// 房东推荐数据初始化
+		$.ajax({
+			type: 'GET',
+			url: 'http://localhost:3000/api/landlord',
+			success(res) {
+				console.log(res, 'res')
+				if (res.message) return alert(message)
+				sessionStorage.setItem('recommendUsers', JSON.stringify(res))
+				res && res.forEach(item => {
+					$('#recommend').append(`
+						<div onclick="toLandlordDetail(this)" data-landlord="${item._id}" class="recommend col-lg-4 col-sm-6 col-xs-12" style="cursor:pointer">
+								<div class="team-wrap">
+									<div class="team-img">
+										<a href="#">
+											<img class="userImg" src="${item.avatar}" alt="" style="width:360px;height:270px ">
+										</a>
+									</div>  
+									<div class="team-content">
+										<h3 class="landlordName" style="margin-bottom:20px">${ item.username }</h3>
+										<p class="intro">${ item.userDesc }</p>
+									</div>
+								</div>
+						</div>
+					`)
+				})
+			} 
+			 
+		})
 
+		// 获取最新发布的房源
+		$.ajax({
+			type: 'GET',
+			url: 'http://localhost:3000/api/publish',
+			success(res) {
+				console.log(res, '/api/publish')
+				res && localStorage.setItem('recommendHouse', JSON.stringify(res))
+				res.forEach((item, index) => {
+					$('.newPublish').append(`
+					<div onclick="toHouseMsgDetail(this)" data-house="${item._id}" class="houses-${index} col-lg-4 col-md-6 col-12">
+									<div class="service-wrap">
+											<div class="service-img">
+													<a href="#">
+														<img style="width:358px;height:333px" src="${item.avatar[0]}" alt="房子图片">
+													</a>
+													<ul>
+														<li>
+															<span class="rent">${ item.status }</span>
+														</li>
+														<li>
+															<p>${item.price}</p>
+														</li>
+													</ul>
+											</div>
+											<div class="service-content">
+													<h3 style="line-height:1.5">${item.title}</h3>
+													<span>${item.city}</span>
+													<p>${item.add}</p>
+													<div class="row">
+															<div class="col-xs-5">
+															 	</div>
+															<div class="col-xs-7">
+																	<ul class="d-flex meta">
+																			<li>${item.roomNum ? item.roomNum : 0} <i class="fa fa-bed"></i></li>
+																			<li>${item.toiletNum ? item.roomNum : 0} <i class="fa fa-bath"></i></li>
+																			<li>${item.livingRoomNum ? item.roomNum : 0} <i class="fa fa-home"></i></li>
+																	</ul>
+															</div>
+													</div>
+											</div>
+									</div>
+						</div>
+					`)
+				})
+			},
+			 
+		})
+	})
 
-    <div class="footer" style="margin-bottom: 200px;margin-top: 100px;text-align: center">  
-        <b>版权所有</b>
-    </div>
+		// 查看房东信息详情
+		function toLandlordDetail(item) {
+			console.log(item, 'ID')
+			const landlordID = $(item).data('landlord')
+			window.location.href=`Landlord.html?lanlordID=${landlordID}`
+		}
 
+    // 查看房子详情
+    function toHouseMsgDetail(item) {
+			console.log($(item).data('house'), 'houseID')
+			const houseID = $(item).data('house')
+			window.location.href=`detail.html?houseID=${houseID}`
+    }
 
-    <script src="resources/layui/layui.js"></script>
-    <script>
-        layui.use(['carousel', 'form'], function () {
-            var carousel = layui.carousel
-                    , form = layui.form;
+		function searchHouseByArea() {
+			const area = getAreaContant()
+			console.log(area, 'area')
+		}
 
-            //常规轮播
-            carousel.render({
-                elem: '#test1'
-                , arrow: 'always'
-            });
+		// 跳转登陆界面
+    function toLogin() {
+        const token = sessionStorage.getItem('token')
+        if (token) {
+            $('#uc').attr('href', 'personal-infor.html')
+        } else {
+            window.location.href = 'login.html'
+        }
+    }
+</script>
 
-            //改变下时间间隔、动画类型、高度
-            carousel.render({
-                elem: '#test2'
-                , interval: 1800
-                , anim: 'fade'
-                , height: '120px'
-            });
-
-            //设定各种参数
-            var ins3 = carousel.render({
-                elem: '#test3'
-            });
-            //图片轮播
-            carousel.render({
-                elem: '#test10'
-                , width: '1300px'
-                , height: '200px'
-                , interval: 5000
-            });
-
-            //事件
-            carousel.on('change(test4)', function (res) {
-                console.log(res)
-            });
-
-            var $ = layui.$, active = {
-                set: function (othis) {
-                    var THIS = 'layui-bg-normal'
-                            , key = othis.data('key')
-                            , options = {};
-
-                    othis.css('background-color', '#5FB878').siblings().removeAttr('style');
-                    options[key] = othis.data('value');
-                    ins3.reload(options);
-                }
-            };
-
-            //监听开关
-            form.on('switch(autoplay)', function () {
-                ins3.reload({
-                    autoplay: this.checked
-                });
-            });
-
-            $('.demoSet').on('keyup', function () {
-                var value = this.value
-                        , options = {};
-                if (!/^\d+$/.test(value))
-                    return;
-
-                options[this.name] = value;
-                ins3.reload(options);
-            });
-
-            //其它示例
-            $('.demoTest .layui-btn').on('click', function () {
-                var othis = $(this), type = othis.data('type');
-                active[type] ? active[type].call(this, othis) : '';
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        layui.use(['element'], function () {
-
-
-        })
-    </script>
-
-</body>
+       
+    </body>
 </html> 

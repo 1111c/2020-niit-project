@@ -7,11 +7,7 @@ package com.houserent.service;
 
 import com.houserent.pojo.House;
 import java.util.List;
-
-/**
- *
- * @author 52976
- */
+   
 public interface HouseService {
 
     /**
@@ -19,11 +15,28 @@ public interface HouseService {
      */
     House getHouseByHnumber(Integer Hnumber);
 
+    
+    /**
+     * 根据 房屋图片 获取一个 房屋 的所有信息
+     */
+    House getHouseByHpicture(String  Picture);
+    
+     /**
+     * 根据 房屋所在城市  获取一个 房屋 的所有信息
+     */
+    List<House> getHouseByCity(String Hcity );
+
+    
     /**
      * 获取所有房屋的列表
      */
     List getHouseList();
 
+    /**
+     * ，模糊查询所有房屋的列表
+     */
+    List getHouses( String textContext);
+    
     /**
      * 添加一个新房屋
      */
