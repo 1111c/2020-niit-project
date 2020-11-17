@@ -9,31 +9,32 @@ import com.houserent.pojo.House;
 import java.util.List;
 
 /**
- *
- * @author 52976
+ * 
+ * @author 52976  
  */
-public interface HouseDAO  {
-     //传入一个包含新房屋信息的User对象，插入新房屋到数据库
-    void insert(House  house);
+public interface HouseDAO {
+    //传入一个包含新房屋信息的User对象，插入新房屋到数据库
+
+    void insert(House house);
 
     //传入一个包含更新后的拥护信息的House对象，更新拥护信息到数据库
-    void update(House  house);
+    void update(House house);
 
     //根据房屋id 删除单个房屋
     void deleteByHnumber(Integer Hnumber);
 
     //根据房屋id查询单个房屋
-    House getOneByHnumber(Integer Hnumber  );
- 
+    House getOneByHnumber(Integer Hnumber);
+
     //根据所在城市查询单个房屋
-    House getOneByCity( String  City  );
- 
+    List<House> getOneByCity(String City);
+
     //根据所在房屋图片查询单个房屋
-    House getOneByPicture( String  Picture  );
-    
+    House getOneByPicture(String Picture);
+
     //获取所有房屋的列表
     List<House> getAll();
-    
+
     //模糊查询所有房屋的列表
-    List<House> getHouses( String textContext);
+    List<House> getHouses(String textContext);
 }

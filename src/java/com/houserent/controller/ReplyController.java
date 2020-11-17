@@ -8,14 +8,14 @@ package com.houserent.controller;
 import com.houserent.pojo.Reply;
 import com.houserent.service.ReplyService;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.ArrayList;  
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller

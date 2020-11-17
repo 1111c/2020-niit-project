@@ -9,8 +9,8 @@
         <script src="resources/layui/layui.js" type="text/javascript"></script>
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
     </head>
-    <body>
-        <ul class="layui-nav layui-bg-cyan" >
+    <body> 
+        <ul class="layui-nav layui-bg-blue" style=" background-color: #ffffff;" >
 
             <% if (request.getSession().getAttribute("user") != null) {
             %> 
@@ -43,31 +43,19 @@
 
 
             <li class="layui-nav-item">
-                <a href="searchHouse.do">卖房</a>
-            </li>
-            <li class="layui-nav-item" >
-                <a href="searchHouse.do">租房</a>
+                <a href="House.do">卖房</a>
             </li>
           
             <li class="layui-nav-item" >
                 <a href="javascript:;">指南</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="time.do">时间线</a></dd>
-                    <dd><a href="">百科</a></dd>
-
-                </dl>
+               
             </li>
             <li class="layui-nav-item"><a href="">房价</a>
             </li>
 
             <li class="layui-nav-item layui-this"  >
                 <a href="javascript:;">工具</a> 
-                <dl class="layui-nav-child">
-                    <dd><a href="houseprice.do">房价评估</a></dd>
-                    <dd><a href="ShowHouse.do">发布房源</a></dd> 
-                    <dd><a href="time.do">layui</a></dd> 
-                    
-                </dl>
+               
             </li>
         </ul>
 

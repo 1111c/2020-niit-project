@@ -1,8 +1,4 @@
-<%-- 
-    Document   : UserList
-    Created on : 2019-11-19, 10:42:27
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +10,7 @@
         <script src="resources/js/jquery.js" type="text/javascript"></script>
         <script src="resources/layui/layui.js" type="text/javascript"></script>
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
-
+  
 
     </head>
     <body>

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-
+  
     /*SessionFactory已经注册为Spring的bean
-     如果要使用Spring中的事务，就建议使用getCurrentSession获取Session
+     如果要使用Spring中的事务，就建议使用getCurrentSession获取Session  
      getCurrentSession()不需要手动关闭session,自动会关闭，如果已经有创建session，不需要重复创建；
      openSession()需要你手动关闭session，而且每执行一个操作，就需要创建一个session，如果不手动关闭session
      就会出现连接池溢出，程序异常

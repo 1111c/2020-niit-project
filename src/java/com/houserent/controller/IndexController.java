@@ -10,13 +10,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItem; 
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;  
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,6 +26,9 @@ public class IndexController {
     public String ToPage(@PathVariable("pagename") String jspName  ) {
         return jspName ;
     } 
+    
+
+    
     
     @RequestMapping("/signout")
     public String SignOut( HttpServletRequest request   ) {

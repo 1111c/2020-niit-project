@@ -1,8 +1,4 @@
-<%-- 
-    Document   : OA_UserSearch
-    Created on : 2019-11-19, 15:39:20
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +10,7 @@
         <link rel="stylesheet" href="resources/css/reset.css">
         <link rel="stylesheet" href="resources/css/style.css">
     </head>
-    
+     
     <body> 
         <div class="searchbox">
             <div class="mod_select">

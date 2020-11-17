@@ -1,3 +1,4 @@
+<%@page import="com.houserent.pojo.House"%>
 <%@page import="com.houserent.pojo.Reply"%>
 <%@page import="com.houserent.pojo.Comment"%>
 <%@page import="com.houserent.pojo.Comment"%>
@@ -12,7 +13,33 @@
         <link rel="stylesheet" href="resources/layui/css/layui.css">
         <script src="resources/js/jquery.js" type="text/javascript"></script>
         <link href="resources/layui/css/layui.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/map/responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/map/showimg.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/map/detail.css" rel="stylesheet" type="text/css"/>
         <script src="resources/layui/layui.js" type="text/javascript"></script>
+        
+        <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=cd73b4c03223ddc97b49b9f72b09afc5"></script>
+
+
+        <!-- 城市定位 -->
+        <script language="javascript" type="text/javascript" 
+        src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+        <script language="javascript" type="text/javascript" >
+
+             
+
+            function initMap(pox,   poy) {
+                var map = new AMap.Map('container', {
+                    zoom: 10,
+                    center: [63.41069793701172, 63.04681396484375]
+                });
+                var marker = new AMap.Marker({
+                    position: [63.41069793701172, 63.04681396484375],
+                    map: map
+                });
+            }
+
+        </script>
         <style type="text/css">
             .container {
                 width: 485px;
@@ -58,12 +85,14 @@
     </head>
     <body>
         <%@include file="Header.jsp"%>
+        
+        <% House house = (House)request.getSession().getAttribute("house");%>
         <div style="padding: 30px; background-color: #F2F2F2;">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md6">
                     <div class="layui-card">
                         <div class="layui-card-body">
-                            <div style="float: left;"><img src="resources/image/SH1.png" style="width: 80px; height: 80px;" alt=""/></div>
+                            <div style="float: left;"><img src="resources/image/H1.jpg" style="width: 80px; height: 80px;" alt=""/></div>
                             <div style="float: left; margin-top: 40px; margin-left: 20px;"><a style="font-size: 30px;font-weight: 1;color: #2F4056">连接每个家的故事</a></div>
                             <div style="clear: both"></div>
                         </div>
@@ -119,10 +148,10 @@
                         <hr style="margin-top: 25px;">
                         <div style="margin-top: 25px;">
                             <div style="float: left">
-                                <a style="font-size: 25px;font-weight: 3px;">几室几厅</a>
+                                <a style="font-size: 25px;font-weight: 3px;">4室1厅</a>
                             </div>
                             <div style="float:left">
-                                <a style="font-size: 25px;font-weight: 3px; margin-left: 80px; ">朝向</a>
+                                <a style="font-size: 25px;font-weight: 3px; margin-left: 80px; ">朝南</a>
                             </div>
                             <div style="float: left">
                                 <a style="font-size: 25px;font-weight: 3px;margin-left: 80px;">面积${house.harea}</a>
@@ -186,14 +215,14 @@
                                     <td>建筑面积</td>
                                     <td style="color:black">${house.harea}</td>
                                     <td>户型结构</td>
-                                    <td style="color:black">人生似修行</td>
+                                    <td style="color:black">冬暖夏凉</td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>房屋朝向</td>
-                                    <td style="color:black">朝向</td>
+                                    <td style="color:black">朝南</td>
                                     <td>梯户比列</td>
-                                    <td style="color:black">一楼几户</td>
+                                    <td style="color:black">一楼4户</td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -351,67 +380,8 @@
 
         </div> 
 
-
-
-
-        <!--position: absolute; margin-top: -1450px; margin-bottom: 200px;-->
-        <div style=" margin-left: 100px; margin-top: 50px; " >    
-
-            <div  id="comment"  style=" border: 1px solid; position: absolute; 
-                  background: #fff;
-                  width:  550px;
-                  height: 300px;
-                  position: fixed;
-                  left: 50%;
-                  top: 50%;
-                  z-index: 11;
-                  margin: -200px 0 0 -350px;
-                  display: none;
-                  border-top:8px solid  rgba(100,100,100,0.15); 
-                  border-right:8px solid  rgba(100,100,100,0.15);  
-                  border-bottom: 8px solid  rgba(100,100,100,0.15);  
-                  border-left:8px solid  rgba(100,100,100,0.15);
-                  border-radius: 10px;
-                  padding:  solid 3px ;
-                  ">
-
-
-                <div  style=" background: #ebf5ea; width: 550px; height: 50px;    align-content: center; ">
-
-                    <span  style=" float:  right;  display:  inline-block;  margin-top: 13px;  margin-right: 30px;">
-                        <a href="javascript:;" onclick="close_dialog()" style=" color: rgba(200,100,100,1);  text-decoration: none;">&nbsp;&nbsp;&nbsp;x</a>
-                    </span>
-                    <h2 style=" float:  left;  font: 18px Arial, Helvetica, sans-serif; color: #072;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写短评:</h2>
-                </div>
-
-                <div class="wfdiv3" style="margin-top: 30px; margin-left: 30px;">
-
-                    <form  method="post" action="addComment.do" >
-                        <h2 style=" float:  left;  font: 24px Arial, Helvetica, sans-serif; color: #072;">&nbsp;&nbsp; 简短评论:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23个评价</h2>
-                        <input type="hidden" name="UName"  value="<%=request.getSession().getAttribute("UName")%>"/>
-                        <input type="hidden" name="Hnumber"   value="<%=request.getSession().getAttribute("Hnumber")%>"/>
-                        <input type="hidden" name="UImage"    value="<%=request.getSession().getAttribute("UImage")%>"/>
-
-                        <textarea   name="content" style=" font: 18px Arial, Helvetica, sans-serif; color: #072; display:  inline-block; border:rgba(100,100,100,0.15) 3px solid;  margin-left: 18px;  margin-top: 10px; margin-bottom: 10px;width: 450px; height: 100px;  resize: none; ">
-                                        
-                           
-                        </textarea>
-                        </br> 
-                        <input type="submit"  style=" width:60px; height: 40px; background: #fff; float: right;font: 18px Arial, Helvetica, sans-serif; color: #072;  display:  inline-block; margin-right: 60px; margin-top: 10px; " value="提交"  /> 
-                    </form> 
-                </div>
-            </div>
-
-
-            <div  style="padding-left: 100px; margin-left: -200px; padding-top: 30px;padding-right: 100px;  " >
-                <p  style=" font-size: 2em;   "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  房屋短评......</p>
-                <br/><br/><br/>
-                <a style="font-size: 20px; text-decoration:none; color:#072; float:right;  margin-right: 150px;  margin-top:-80px; " href="javascript:;" 
-                   onclick="showComment()"  
-                   onmouseover="this.style.color = 'blue';"
-                   onmouseout="this.style.color = '#072';"
-                   >评论</a> 
-            </div>  
+ 
+ 
 
             <%
                 request.setCharacterEncoding("UTF-8");
@@ -450,66 +420,7 @@
 
         </div> 
 
-
-        <script>
-            function showComment() {
-
-
-                var uid = "<%=request.getSession().getAttribute("UName")%>";
-                console.log(uid);
-                if (uid === null) {
-                    window.location.href = "Login.do";
-                } else {
-                    var target = document.getElementById('comment');
-                    if (target.style.display == "block") {
-                        target.style.display = "none";
-                    } else {
-                        target.style.display = "block";
-                    }
-
-                }
-
-            }
-            function showReply() {
-
-                var uid = "<%=request.getSession().getAttribute("UName")%>"
-                console.log(uid);
-                if (uid === null) {
-                    window.location.href = "Login.do";
-                } else {
-                    var target = document.getElementById('reply');
-                    if (target.style.display == "block") {
-                        target.style.display = "none";
-                    } else {
-                        target.style.display = "block";
-                    }
-
-                }
-            }
-
-            function close_dialog() {
-                var target = document.getElementById('comment');
-                if (target.style.display == "block") {
-                    target.style.display = "none";
-                } else {
-                    target.style.display = "block";
-                }
-            }
-
-            function close_dialog2() {
-                var target = document.getElementById('reply');
-                if (target.style.display == "block") {
-                    target.style.display = "none";
-                } else {
-                    target.style.display = "block";
-                }
-            }
-
-        </script>       
-
-
-
-
-
+ 
+ 
     </body>
 </html>

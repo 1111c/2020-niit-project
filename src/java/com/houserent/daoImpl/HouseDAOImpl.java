@@ -12,7 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;    
 
 @Repository
 public class HouseDAOImpl implements HouseDAO {
@@ -70,7 +70,7 @@ public class HouseDAOImpl implements HouseDAO {
     }
 
     @Override
-    public House getOneByCity(String City) {
+    public List<House> getOneByCity(String City) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "from House where Hcity =:Hcity";
         Query query = session.createQuery(hql);
@@ -78,12 +78,7 @@ public class HouseDAOImpl implements HouseDAO {
         List<House> list = query.list();
         //session.close();
         System.out.println("我是查询的一个House");
-        if (list != null) {
-            return list.get(0);
-        } else {
-            return null;
-        }
-
+        return list; 
     }
 
     @Override
@@ -114,6 +109,24 @@ public class HouseDAOImpl implements HouseDAO {
         Query query = session.createQuery(hql);
         query.setString("Hcity", textContext);
         List<House> list = query.list();
+        
+        hql = "from House where Harea like:Harea";
+        query = session.createQuery(hql);
+        query.setString("Harea", textContext);
+        List<House> list2 = query.list();
+        
+        for( House house:list2 ){
+             list.add(house);
+        }
+        
+         hql = "from House where Hrentprice like:Hrentprice";
+        query = session.createQuery(hql);
+        query.setString("Hrentprice", textContext);
+        List<House> list3 = query.list();
+        
+        for(House house:list3 ){
+             list.add(house);
+        } 
         session.close(); 
         return list;
     }

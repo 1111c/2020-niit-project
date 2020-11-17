@@ -7,7 +7,7 @@ package com.houserent.service;
 
 import com.houserent.pojo.House;
 import java.util.List;
- 
+   
 public interface HouseService {
 
     /**
@@ -24,7 +24,7 @@ public interface HouseService {
      /**
      * 根据 房屋所在城市  获取一个 房屋 的所有信息
      */
-    House getHouseByCity(String Hcity );
+    List<House> getHouseByCity(String Hcity );
 
     
     /**

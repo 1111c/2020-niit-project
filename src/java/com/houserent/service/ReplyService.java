@@ -11,10 +11,10 @@ import java.util.List;
 public  interface ReplyService {
     
     
-     /**
+     /**  
      * 根据 房屋ID 获取一个 房屋 的所有评论
      */
-     List<Reply> getCommentReplyByCid(Integer Cid);
+     List<Reply> getCommentReplyByCid(Integer Cid); 
 
        /**
      * 添加一个新房屋

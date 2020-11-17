@@ -7,10 +7,11 @@ package com.houserent.controller;
 
 import com.houserent.pojo.Comment;
 import com.houserent.service.CommentService;
+import com.houserent.service.HouseService;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat; 
+import java.util.ArrayList;  
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,10 @@ public class CommentController {
     
     @Autowired
     private CommentService commentService;
+    
+    @Autowired
+    private HouseService houseService;
+    
     //@ResponseBody
     @RequestMapping(value = "/addComment.do", method = RequestMethod.POST ,produces = "text/html;charset=utf-8")
     public String addComment(Comment comment , HttpServletRequest request  ,HttpServletResponse response  )   {
@@ -41,6 +46,8 @@ public class CommentController {
         String datetime = simpleDateFormat.format(date);
         request.getSession().setAttribute("datetime", datetime); 
         return "redirect:/ShowHouse.do";
+        
+        
     }
     
     

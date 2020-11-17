@@ -10,11 +10,11 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.HashMap;   
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.UUID; 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
@@ -153,10 +153,15 @@ public class UserController {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         User user = userService.validateLogin(userName, userPsw);
-        request.getSession().setAttribute("UImage", user.getUPicture());
+        
         if (user == null) {
+            System.out.println("登录失败！！！");
             return "fail";
         }
+        
+        request.getSession().setAttribute("UImage", user.getUPicture());
+        
+        System.out.println("我是登录的时候的打印：" +user.getUName() + "    " + user.getUGender());
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("UName", user.getUName());
         request.getSession().setAttribute("UImage", user.getUPicture());
@@ -165,9 +170,10 @@ public class UserController {
         //model.addAttribute("request", request);
 
         System.out.println(status + "   Ustatus : " + user.getUstatus());
+        
         model.addAttribute("user", user);
-        if (status.equals("1")
-                && (user.getUstatus().equals("用户") || user.getUstatus().equals("中介"))) {
+        if (status.equals("1") &&  user.getUstatus().equals("用户") ||
+            status.equals("1") &&  user.getUstatus().equals("中介") ) {
             request.getSession().setAttribute("to", "UserZone.do");
             return "UserZone";
         } else if (status.equals("2") && user.getUstatus().equals("管理员")) {

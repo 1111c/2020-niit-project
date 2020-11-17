@@ -1,9 +1,4 @@
-<%-- 
-    Document   : ShowHouse
-    Created on : 2019-11-26, 10:42:52
-    Author     : xiaowen
---%>
-
+ 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

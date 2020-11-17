@@ -11,7 +11,7 @@
     <body>
         <div style="padding: 15px;">
             <table class="layui-hide" id="test"></table>
-        </div>
+        </div>  
         <script src="resources/layui/layui.js"></script>
         <script>
             layui.use('table', function () {

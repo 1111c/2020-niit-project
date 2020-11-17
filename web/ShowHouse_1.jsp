@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ShowHouse
-    Created on : 2019-11-26, 10:42:52
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,7 +57,7 @@
     <div class="layui-col-md6">
       <div class="layui-card">
           <div class="layui-card-body">
-              <div style="float: left;"><img src="resources/image/SH1.png" style="width: 80px; height: 80px;" alt=""/></div>
+              <div style="float: left;"><img src="resources/image/SH/1.jpg" style="width: 80px; height: 80px;" alt=""/></div>
               <div style="float: left; margin-top: 40px; margin-left: 20px;"><a style="font-size: 30px;font-weight: 1;color: #2F4056">连接每个家的故事</a></div>
               <div style="clear: both"></div>
           </div>
@@ -350,6 +346,8 @@
             
            
 </div> 
+        
+          <%@ include file="bottom.jsp"%>
 
       <script src="resources/layui/layui.js"></script>
       <!---------------------轮播的 script ------------------------------------------>

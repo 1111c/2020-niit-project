@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,7 +10,7 @@ import com.houserent.pojo.User;
 import com.houserent.service.UserService;
 import com.houserent.service.UserService;
 import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.IOException; 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,12 +51,19 @@ public class UserServiceImpl implements UserService {
         return dao.getAll();
     }
 
+    
+    
     @Transactional(propagation = Propagation.REQUIRED, timeout = 10)
     @Override
     public void addUser(User user) {
         dao.insert(user);
     }
 
+    
+    
+    
+    
+    
     @Override
     public void updateUser(User user) {
         dao.update(user);

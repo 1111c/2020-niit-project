@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Reply")
-public class Reply {
+@Table(name = "Reply")  
+public class Reply { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

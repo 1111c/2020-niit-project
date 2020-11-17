@@ -12,8 +12,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
-
+public class User implements Serializable {  
+ 
     @Id
     @GeneratedValue(generator = "pkAssigned")
     @GenericGenerator(name="pkAssigned",strategy = "assigned")

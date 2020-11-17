@@ -1,8 +1,4 @@
-<%-- 
-    Document   : UserList
-    Created on : 2019-11-19, 10:42:27
-    Author     : xiaowen
---%>
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,10 +14,7 @@
 
     </head>
     <body>
-        <!--        <div style="padding: 15px;">
-                <table class="layui-hide" id="test"></table>
-                </div>
-        -->
+    
 
         <div class="layui-row" id="EditUser" style="display:none;">
             <div class="layui-col-md10">
@@ -333,35 +326,6 @@
 
         </script>
 
-
-        <!--          
-        <script src="resources/layui/layui.js" charset="utf-8"></script> 
-        <script>
-        layui.use('table', function(){
-          var table = layui.table;
-          
-          table.render({
-            elem: '#test'
-            ,url:'resources/users.json'
-            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-              layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-              //,curr: 5 //设定初始在第 5 页
-              ,groups: 1 //只显示 1 个连续页码
-              ,first: false //不显示首页
-              ,last: false //不显示尾页
-              
-            }
-            ,cols: [[
-              {field: 'uname', width: 100, title: '用户昵称'}
-                                    , {field: 'usex', width: 80, title: '性别', sort: true}
-                                    , {field: 'uphone', width: 80, title: '电话'}
-                                    , {field: 'uemail', title: '邮箱', minWidth: 150}
-                                    , {field: 'udate', width: 120, title: '出生日期', sort: true}
-                                    , {field: 'upassword', width: 135, title: '密码'}
-            ]]
-            
-          });
-        });
-        </script>-->
+ 
     </body>
 </html>

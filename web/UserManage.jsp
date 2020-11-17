@@ -1,7 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Layui查询功能实现</title>
@@ -325,18 +325,7 @@
                         $("#check").show();
                         $("#showImg").hide();
                         $("#updateImg11").show();
-                        // layer.alert('编辑行：<br>'+ JSON.stringify(obj.data.address))
-                        // alert(data.fname); 
-//                        $("#id").val(data.id);
-//                        $("#fname").val(data.fname);
-//                        $("#phone").val(data.phone);
-//                        $("#email").val(data.email);
-//                        $("#password").val(data.password);
-//                        $("#name").val(data.name);
-//                        $("#idcard").val(data.idcard);
-//                        $('#imgshow').attr('src', "/file/" + data.headimg);
-//                        $('#demo1').attr('src', "/file/" + data.headimg);
-//                        $("#introduce").val(data.introduce);
+
                         $("#UName").val(data.UName);
                         $("#UPicture").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);

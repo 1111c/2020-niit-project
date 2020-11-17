@@ -10,11 +10,12 @@ public interface UserDAO {
     //传入一个包含新用户信息的User对象，插入新用户到数据库
     void insert(User user);
 
-    //传入一个包含更新后的拥护信息的User对象，更新拥护信息到数据库
+    
+    //传入一个包含更新后的拥护信息的User对象，更  新拥护信息到数据库
     void update(User user);
 
     //根据用户id 删除单个用户
-    void deleteByUserName(String UserName);
+    void deleteByUserName(String UserName); 
 
     //根据用户id查询单个用户
     User getOneByUserName(String UserName  );

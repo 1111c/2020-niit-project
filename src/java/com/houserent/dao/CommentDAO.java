@@ -11,8 +11,8 @@ import java.util.List;
 /**
  *
  * @author 52976
- */
-public interface CommentDAO {
+ */  
+public interface CommentDAO { 
     
      //传入一个包含新房屋信息的User对象，插入新房屋到数据库
     void insert(Comment  house);

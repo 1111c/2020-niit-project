@@ -10,7 +10,7 @@ import com.houserent.pojo.Comment;
 import com.houserent.service.CommentService;
 import java.util.List;
 import org.hibernate.Query;
-import org.hibernate.Session;
+import org.hibernate.Session;  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentDAO dao;
-
+ 
     @Override
     public List<Comment> getHouseCommentByHnumber(Integer Hnumber) { 
         return dao.getAll(Hnumber);

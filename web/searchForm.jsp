@@ -14,7 +14,7 @@
 
     <body> 
 
-
+ 
         <div class="layui-row" id="EditUser" style="display:none;">
             <div class="layui-col-md10">
                 <form class="layui-form layui-from-pane" id="updateUser"   style="margin-top:20px" >

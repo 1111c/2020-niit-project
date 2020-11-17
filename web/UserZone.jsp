@@ -1,7 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>UserZone</title>
@@ -9,10 +9,10 @@
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
         <style type="text/css">
             .demo1-bg{
-                background: url(resources/image/UZ5.jpg) no-repeat ;
+                background: url(resources/image/UZ1.jpg) no-repeat ;
                 background-size: cover;
                 width:cover;
-                height: 300px;
+                height: 1000px;
                 position: relative;
             }
             .demo1{
@@ -73,7 +73,7 @@
                                 <img src="resources/image/UZ2.png" alt="" style="width: 50px;height: 50px;"/>
                             </div>
                             <div style="float: left;margin-top: 33px; margin-left: 10px;">
-                                <a style="font-size: 20px;font-weight: bolder;">${user.UName}的房源收藏夹</a>
+                                <a style="font-size: 20px;font-weight: bolder;">${user.UName}的房源收藏夹(开发中......)</a>
                             </div>
                             <div style="clear: both"></div>
                         </div>

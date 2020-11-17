@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HouseServiceImpl implements  HouseService{
 
-    @Autowired
+    @Autowired 
     private HouseDAO dao;
 
     
@@ -45,7 +45,7 @@ public class HouseServiceImpl implements  HouseService{
     }
 
     @Override
-    public House getHouseByCity(String Hcity) {
+    public List<House>  getHouseByCity(String Hcity) {
            return dao.getOneByCity(Hcity);
     }
 

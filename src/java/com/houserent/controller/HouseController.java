@@ -11,15 +11,18 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;  
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.ToDoubleFunction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
@@ -51,18 +54,29 @@ public class HouseController {
         System.out.println(selection);
 
         House house = null;
+        List<House> list = null;
+        List<House> hlist = null;
+        List<House> hhlist = null;
         if (selection.equals("房屋Id")) {
             // user  = userService.getUserByUserName(UName);
             house = houseService.getHouseByHnumber(Integer.parseInt(UName));
         } else if (selection.equals("所在城市")) {
             //user = userService.getOneByUserPhone(UName);
-            house = houseService.getHouseByCity(UName);
+            hlist = new LinkedList<>();
+            hhlist = houseService.getHouseByCity(UName);
+            for (int i = (page - 1) * limit; i < page * limit && i < hhlist.size(); i++) {
+                hlist.add(hhlist.get(i));
+            }
         }
-
-        //带参数从数据库里查询出来放到list的集合里 
-        List<House> hlist = new LinkedList<>();
-        hlist.add(house);
         int count = 1;
+        //带参数从数据库里查询出来放到list的集合里 
+        if (selection.equals("所在城市")) {
+            count = hhlist.size();
+        } else {
+            hlist = new LinkedList<>();
+            hlist.add(house);
+            count = 1;
+        }
         //用json来传值
         JSONArray json = JSONArray.fromObject(hlist);
         String js = json.toString();
@@ -98,20 +112,62 @@ public class HouseController {
         return jso;
     }
 
-    @RequestMapping("/searchHouses.do") 
+    @RequestMapping("/searchHouses.do")
     public String searchHouses(
             @RequestParam(value = "text") String text,
             HttpServletRequest request, HttpServletResponse response) {
-            // request.setCharacterEncoding("UTF-8");
-            response.setCharacterEncoding("UTF-8");
-            //带参数从数据库里查询出来放到houselist的集合里
-            List<House> houselist = houseService.getHouses(text);
-            request.getSession().setAttribute("context", houselist);
-           
-            for( House house:houselist){
-                System.out.println(house.getHnumber());
+        // request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        //带参数从数据库里查询出来放到houselist的集合里
+        List<House> houselist = houseService.getHouses(text);
+        // 实现排序
+        Collections.sort(houselist, new Comparator<House>() {
+            public int compare(House o1, House o2) {
+                return (int) (o1.getHrentprice() * 1000 - o2.getHrentprice() * 1000);
             }
-            return "SearchDemo";
+        });
+
+        if (text.equals("请输入地段、小区或者房型")) {
+            request.getSession().setAttribute("context", null);
+        } else {
+            request.getSession().setAttribute("context", houselist);
+        }
+        for (House house : houselist) {
+            System.out.println(house.getHnumber());
+        }
+
+        for (House house : houselist) {
+            System.out.println(house.getHrentprice());
+        }
+
+        return "SearchDemo";
+    }
+
+    @RequestMapping("/sort.do")
+    public String sort(
+            @RequestParam(value = "kind") String kind,
+            HttpServletRequest request, HttpServletResponse response) {
+        // request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        //带参数从数据库里查询出来放到houselist的集合里
+        List<House> houselist = (List<House>) request.getSession().getAttribute("context");
+        // 实现排序
+        if (kind.equals("1")) {
+            Collections.sort(houselist, new Comparator<House>() {
+                public int compare(House o1, House o2) {
+                    return (int) (o1.getHrentprice() * 1000 - o2.getHrentprice() * 1000);
+                }
+            });
+        }
+        else {
+            Collections.sort(houselist, new Comparator<House>() {
+                public int compare(House o1, House o2) {
+                    return (int) (o2.getHrentprice() * 1000 - o1.getHrentprice() * 1000);
+                }
+            });
+        }
+        request.getSession().setAttribute("context", houselist); 
+        return "SearchDemo";
     }
 
     //用户注册的请求：如果请求参数与pojo类中的属性的参数一致，自动封装为一个实体
@@ -126,8 +182,8 @@ public class HouseController {
         house = houseService.getHouseByHpicture(house.getHpicture());
         System.out.println("Picture: " + house.getHpicture());
         request.getSession().setAttribute("Hnumber", house.getHnumber());
+        request.getSession().setAttribute("house", house);
         System.out.println("Hnumber: " + house.getHnumber());
-
         model.addAttribute(house);
         return "ShowHouse";
     }
@@ -224,7 +280,7 @@ public class HouseController {
                 String locationpath = ResourceUtils.getURL("classpath:").getPath();
                 int index = locationpath.indexOf("build");
                 locationpath = locationpath.substring(1, index);
-                String filepath = locationpath + "\\web\\uploadImage\\" + uuid + "." + prefix;
+                String filepath = locationpath + "web\\uploadImage\\" + uuid + "." + prefix;
 
                 File files = new File(filepath);
                 //打印查看上传路径
@@ -233,6 +289,7 @@ public class HouseController {
                     files.getParentFile().mkdirs();
                 }
                 file.transferTo(files);
+          
                 Map<String, Object> map2 = new HashMap<>();
                 Map<String, Object> map = new HashMap<>();
                 map.put("code", 0);
@@ -261,6 +318,21 @@ public class HouseController {
         map.put("msg", "");
         return map;
 
+    }
+
+    //房屋展示   @RequestParam(value = "houseId") String houseId,
+    @RequestMapping(value = "/Show.do", method = RequestMethod.GET)
+    public String Show(Model model,
+            HttpServletRequest request, HttpServletResponse response
+    ) {
+        String houseId = request.getParameter("houseId");
+        House house = houseService.getHouseByHnumber(Integer.parseInt(houseId));
+        System.out.println("Picture: " + house.getHpicture());
+        request.getSession().setAttribute("Hnumber", house.getHnumber());
+        request.getSession().setAttribute("house", house);
+        System.out.println("Hnumber: " + house.getHnumber());
+        model.addAttribute(house);
+        return "ShowHouse";
     }
 
 }

@@ -2,7 +2,7 @@
 <%@page import="com.houserent.pojo.House"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
 
         <title>Search</title>
@@ -25,11 +25,11 @@
         <div id="search_land">
             <div id="search">
                 <!--<img src="images/search.png"></img>--> 
-                <div id="search_button" onclick="search()">
-                    搜索
+                <div id="search_button" style=" background-color: #ffffff; " onclick="search()">
+                    <front style="color: #337AB7;" >搜索 </front>
                 </div>
-                <form id="search_form" action="searchAllHouse.do">
-                    <input id="text" name="searchFor" type="text" size="18" style="color: gray"
+                <form id="search_form" action="#">
+                    <input id="text" name="searchFor" type="text" size="18" style="color:#337AB7;"
                            value="请输入地段、小区或者房型"
                            onfocus="if (value == '请输入地段、小区或者房型') {
                                        value = ''
@@ -41,22 +41,22 @@
             </div>
         </div>
         <div id="search_condition">
-            <div class="title">按条件找房</div>
+            <div  class="title"  style=" background-color: #ffffff">   <front style="color: #337AB7;"> 按条件找房 </front>  </div>
             <div class="list">
                 <div id="line">
                     <ul>
                         <li id="title"><a style="color: #999; text-decoration: none;">区域：</a></li>
-                        <li><a href="#">天河</a></li>
-                        <li><a href="#">越秀</a></li>
-                        <li><a href="signin.html">荔湾</a></li>
-                        <li><a href="emailSignup.html">黄埔</a></li>
-                        <li><a href="#">番禺</a></li>
-                        <li><a href="#">白云</a></li>
-                        <li><a href="#">海珠</a></li>
-                        <li><a href="#">花都</a></li>	
-                        <li><a href="#">增城</a></li>	
-                        <li><a href="#">从化</a></li>	
-                        <li><a href="#">其他</a></li>	
+                        <li><a href="#">黄岛</a></li>
+                        <li><a href="#">市北</a></li>
+                        <li><a href="#">城阳</a></li>
+                        <li><a href="#">李沧</a></li>
+                        <li><a href="#"> 即墨</a></li>
+                        <li><a href="#">市南</a></li>
+                        <li><a href="#">胶州</a></li>
+                        <li><a href="#">崂山</a></li>	
+                        <li><a href="#">平度</a></li>	
+                        <li><a href="#">莱西</a></li>	
+                        <li><a href="#">青岛周边</a></li>	
                     </ul>
                 </div>
                 <div id="line">
@@ -64,8 +64,8 @@
                         <li id="title"><a style="color: #999; text-decoration: none;">价格：</a></li>
                         <li><a href="#">500以下</a></li>
                         <li><a href="#">500-1000</a></li>
-                        <li><a href="signin.html">1000-2000</a></li>
-                        <li><a href="emailSignup.html">2000-3000</a></li>
+                        <li><a href="#">1000-2000</a></li>
+                        <li><a href="#">2000-3000</a></li>
                         <li><a href="#">3000-5000</a></li>
                         <li><a href="#">5000-8000</a></li>
                         <li><a href="#">8000-10000</a></li>
@@ -77,8 +77,8 @@
                         <li id="title"><a style="color: #999; text-decoration: none;">面积：</a></li>
                         <li><a href="#">50以下</a></li>
                         <li><a href="#">50-70</a></li>
-                        <li><a href="signin.html">70-90</a></li>
-                        <li><a href="emailSignup.html">90-110</a></li>
+                        <li><a href="#">70-90</a></li>
+                        <li><a href="#">90-110</a></li>
                         <li><a href="#">110-130</a></li>
                         <li><a href="#">130-150</a></li>
                         <li><a href="#">150-200</a></li>
@@ -89,10 +89,9 @@
                     <ul>
                         <li id="title"><a style="color: #999; text-decoration: none;">房型：</a></li>
                         <li><a href="#">一室</a></li>
-                        <li><a href="#">一室</a></li>
-                        <li><a href="signin.html">一室</a></li>
-                        <li><a href="emailSignup.html">一室</a></li>
-                        <li><a href="#">一室</a></li>
+                        <li><a href="#">二室</a></li>
+                        <li><a href="#">三室</a></li>
+                        <li><a href="#">四室</a></li> 
                         <li><a href="#">别墅</a></li>
                     </ul>
                 </div>
@@ -124,14 +123,19 @@
                     }
                 }
             </script>
-            <div id="title">
-                <span>全部房源
-                </span><span>个人房源
-                </span><span style="width:75.83%;border-right:none;">hehhehehe
+            <div id="title" style=" border-bottom:1px solid #DDD;"> 
+                <span>个人房源
                 </span>
+<!--                <span style=" float:  right;">
+                    <a href="sort.do?kind=2"> 价格降序  </a>
+                </span>
+                <span style=" float:  right;">
+                    <a href="sort.do?kind=1">  价格升序 </a>
+                </span>-->
+
             </div>
 
-            <%if (request.getSession().getAttribute("context") == null) { %>
+        
             <div class="result">
                 <img src="img/11.jpg"/>
                 <div id="detial">
@@ -330,36 +334,8 @@
                     </p>
                     <p class="p4"><a>距碧桂园北门公交站约694米</a></p>
                 </div>
-            </div>
-
-            <%} else {  List<House> houselist =(List<House>) request.getSession().getAttribute("context");
-              for( House house:houselist){
-                 
-             %>
-
-            <div class="result">
-                <img src="<%=house.getHpicture()%>"/>
-                <div id="detial">
-                    <p class="p1"><a href="ShowHouse_1.jsp">白云同和同和街握山南一路41 86平米3室1厅1卫</a></p>
-                    <p class="p2">
-                        <a> 整租&nbsp;&nbsp;&nbsp;</a>|
-                        <a>&nbsp;&nbsp;&nbsp;三室一厅&nbsp;&nbsp;&nbsp;</a>|
-                        <a>&nbsp;&nbsp;&nbsp;86平米&nbsp;&nbsp;&nbsp;</a> |
-                        <a>&nbsp;&nbsp;&nbsp;5/7层&nbsp;&nbsp;&nbsp;</a> |
-                        <a>&nbsp;&nbsp;&nbsp;朝南北</a>
-                    </p>
-                    <p class="p3">
-                        <a href="">白云</a><a>-</a>
-                        <a href="">同和</a><a>-</a>
-                        <a href="">同和街握山南一路41号</a>
-                        <span>3000<a> 元/月</a></span>
-                    </p>
-                    <p class="p4"><a>距碧桂园北门公交站约694米</a></p>
-                </div>
             </div> 
-            <%}%> 
-             <%}%> 
-        </div>
+         
         <%@include file="bottom.jsp"%>
 
         <script>
