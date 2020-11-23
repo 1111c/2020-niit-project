@@ -1,22 +1,53 @@
+ 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html> 
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Layui查询功能实现</title>
+        <title>OA_UserSearch</title>
+        <link rel="stylesheet" href="resources/layui/css/layui.css">
+        <link rel="stylesheet" href="resources/css/reset.css">
+        <link rel="stylesheet" href="resources/css/style.css">
         <script src="resources/js/jquery.js" type="text/javascript"></script>
         <script src="resources/layui/layui.js" type="text/javascript"></script>
         <script src="resources/layui/layui.all.js" type="text/javascript"></script>
-        <link   href="resources/layui/css/layui.css" rel="stylesheet" type="text/css"/>
+
 
     </head>
-
     <body>
+<!--        <div class="searchbox">
+            <div class="mod_select">
+                <div class="select_box">
+                    <span class="select_txt">用户昵称</span>
+                    <span class="select-icon"></span>
+                    <ul class="option">
+                        <li>用户昵称</li>
+                        <li>用户电话</li>
+                        <li>用户邮箱</li>
+                    </ul>
+                </div>
+            </div>
+            <form  >
+                <input type="hidden" name="UNameLabel" value="用户昵称" id="select_value">
+                <input type="text" name="UName"  id="find" class="import" placeholder="请输入用户昵称">
+                <input type="submit" value="搜   索" class="btn-search"   id="queryRole">
+                <div  class="layui-btn btn-search"  data-type="reload"  id="queryRole"  >搜   索</div> 
+            </form>
+        </div>
+
+               
+                 <div style="margin: -25px 20px;">
+                            <table class="layui-hide" id="test"></table>
+                 </div>
+        -->
+
+
+
         <div class="layui-row" id="EditUser" style="display:none;">
             <div class="layui-col-md10">
                 <form class="layui-form layui-from-pane"   id="updateUser"   style="margin-top:20px" >
- 
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
@@ -24,7 +55,6 @@
                         </div>
                     </div>
 
-                    
                     <div class="layui-form-item" id="showImg">
                         <label class="layui-form-label">头像</label>
                         <div class="layui-input-block">
@@ -39,7 +69,6 @@
                             <input type="text" name="UPhone" id="UPhone" required  lay-verify="required" autocomplete="off" placeholder="请输入年龄" class="layui-input">
                         </div>
                     </div>
-                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">邮箱</label>
                         <div class="layui-input-block">
@@ -47,7 +76,6 @@
                         </div>
                     </div>
 
-                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">性别</label>
                         <div class="layui-input-block">
@@ -55,7 +83,6 @@
                         </div>
                     </div>
 
-                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">出生日期</label>
                         <div class="layui-input-block">
@@ -95,15 +122,11 @@
         </div>
 
 
-        <div class="demoTable" style="padding: 15px">
-            搜索手机号：
-            <div class="layui-inline">
-                <input class="layui-input" id="find" autocomplete="off">
-            </div>
-            <button class="layui-btn" data-type="reload" id="queryRole" >搜索</button>
-        </div>
 
-        <table class="layui-hide" id="Users" lay-filter="test"></table>
+
+        <br/><br/><br/>
+
+        <table class="layui-hide"   id="Users" lay-filter="test"></table>
 
 
 
@@ -114,7 +137,6 @@
                 <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
             </div>
         </script>
-        
         <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
             <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
@@ -135,13 +157,14 @@
 
         <script>
             layui.use(['table', 'form', 'layer', 'upload'], function () {
-                var table = layui.table,
-                        layer = layui.layer, upload = layui.upload, $ = layui.jquery
+                var table = layui.table,layer = layui.layer, upload = layui.upload, $ = layui.jquery
                 form = layui.form;
+                console.log('成功查询所有！！！');
                 table.render({
                     elem: '#Users'
                     , url: 'searchAll.do'
                     , type: 'post'
+                    , id: 'ReloadTable'
                     , toolbar: '#toolbarDemo'
                     , title: '用户数据表'
                     , totalRow: true
@@ -158,68 +181,75 @@
                             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 200}
                         ]]
                     , page: true
-
                 });
 
 
                 // 修改头像
                 layui.use('upload', function () {
-                var $ = layui.jquery, upload = layui.upload;
+                    var $ = layui.jquery,upload = layui.upload;
+                    //普通图片上传
+                    var uploadInst = upload.render({
+                        elem: '#test1upload'
+                        , url: 'upload.do'
+                        , accept: 'images'
+                        , size: 50000
+                        , before: function (obj) {
 
-                //普通图片上传
-                var uploadInst = upload.render({
-                    elem: '#test1upload'
-                    , url: 'upload.do'
-                    , accept: 'images'
-                    , size: 50000
-                    , before: function (obj) {
-
-                        obj.preview(function (index, file, result) {
-                        $('#demo1upload').attr('src', result);
-                      });
-                    }
-                    , done: function (res) {
-                        //如果上传失败
-                        if (res.code > 0) {
-                            return layer.msg('上传失败');
+                            obj.preview(function (index, file, result) {
+                                $('#demo1upload').attr('src', result);
+                            });
                         }
-                        //上传成功
-                        var demoText = $('#demoTextupload');
-                        demoText.html('<span style="color: #4cae4c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传成功</span>');
+                        , done: function (res) {
+                            //如果上传失败
+                            if (res.code > 0) {
+                                return layer.msg('上传失败');
+                            }
+                            //上传成功
+                            var demoText = $('#demoTextupload');
+                            demoText.html('<span style="color: #4cae4c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传成功</span>');
 
-                        var fileupload = $(".image");
-                        fileupload.attr("value", res.data.src);
-                        console.log(fileupload.attr("value"));
-                         console.log('就是我');
-                    }
-                    , error: function () {
-                        //演示失败状态，并实现重传
-                        var demoText = $('#demoTextupload');
-                        demoText.html('<span style="color: #FF5722;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                        demoText.find('.demo-reload').on('click', function () {
-                            uploadInst.upload();
-                        });
-                    }
+                            var fileupload = $(".image");
+                            fileupload.attr("value", res.data.src);
+                            console.log(fileupload.attr("value"));
+                            console.log('就是我');
+                        }
+                        , error: function () {
+                            //演示失败状态，并实现重传
+                            var demoText = $('#demoTextupload');
+                            demoText.html('<span style="color: #FF5722;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                            demoText.find('.demo-reload').on('click', function () {
+                                uploadInst.upload();
+                            });
+                        }
+                    });
+
+
                 });
-
-
-            });
-
-
-
+ 
                 //根据phone关键字查询
                 $('#queryRole').on('click', function () {
                     var find = document.getElementById("find").value;
-                    table.reload('Users', {
-                        //page: {curr: 1},
-                        url: 'searchUserByName.do',
-                        where: {'userName': find}
-                    })
-                });
+                    var selection = document.getElementById("select_value").value; 
+                     console.log(find);
+                     console.log('我是find');
+                     console.log('selection' +  selection );
+                    table.reload('ReloadTable', {
+                        page: {curr: 1},
+                        type: 'POST',
+                        url: 'searchUserByName.do', 
+                        where: {
+                                UName:find,
+                                selection:selection
+                        }
+                    });
+                    console.log('成功查询一个');
+                }); 
+
+
 
 
                 form.on('submit(formDemo)', function (data) {
-                    console.log(  data );
+                    console.log(data);
                     $.ajax({
                         url: 'updateUser.do',
                         type: 'post',
@@ -273,7 +303,7 @@
                         $("#check").hide();
                         $("#showImg").show();
                         $("#updateImg").hide();
-                        $("#updateImage11").hide(); 
+                        $("#updateImage11").hide();
                         $("#isadmin").val(data.isadmin);
                         $("#id").val(data.id);
                         $("#isforbid").val(data.isforbid);
@@ -299,20 +329,20 @@
                         });
                         // layer.msg('ID：'+ data.id + ' 的查看操作');
                     } else if (obj.event === 'del') {
-                        console.log(  data );
-                         console.log( data.UName );
+                        console.log(data);
+                        console.log(data.UName);
                         layer.confirm('真的删除行么', function (index) {
                             $.ajax({
                                 url: 'deleteUser.do',
-                                type: 'POST', 
-                                data: {UName:data.UName}, 
+                                type: 'POST',
+                                data: {UName: data.UName},
                                 success: function (msg) {
                                     if (msg != null) {
                                         layer.msg("删除成功", {icon: 6});
                                         setTimeout(function () {
                                             layer.closeAll();//关闭所有的弹出层
                                         }, 1000);
-                                        加载层 - 风格
+                                        //加载层 - 风格
                                     } else {
                                         layer.msg("删除失败", {icon: 5});
                                     }
@@ -324,8 +354,19 @@
                     } else if (obj.event === 'edit') {
                         $("#check").show();
                         $("#showImg").hide();
-                        $("#updateImg11").show();
-
+                        $("#updateImg").show();
+                        // layer.alert('编辑行：<br>'+ JSON.stringify(obj.data.address))
+                        // alert(data.fname); 
+//                        $("#id").val(data.id);
+//                        $("#fname").val(data.fname);
+//                        $("#phone").val(data.phone);
+//                        $("#email").val(data.email);
+//                        $("#password").val(data.password);
+//                        $("#name").val(data.name);
+//                        $("#idcard").val(data.idcard);
+//                        $('#imgshow').attr('src', "/file/" + data.headimg);
+//                        $('#demo1').attr('src', "/file/" + data.headimg);
+//                        $("#introduce").val(data.introduce);
                         $("#UName").val(data.UName);
                         $("#UPicture").val(data.UPicture);
                         $("#UPhone").val(data.UPhone);
@@ -335,7 +376,7 @@
                         $("#UPassword").val(data.UPassword);
                         $('#demo1upload').attr('src', data.UPicture);
 
-                          
+
                         layer.open({
                             type: 1,
                             title: "修改个人信息",
@@ -349,8 +390,110 @@
 
         </script>
 
-    </body> 
+
+
+
+
+
+
+
+        <!--------------------------------------------搜索框----------------------------------------------->
+        <script src="resources/js/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $(".select_box").click(function (event) {
+                    event.stopPropagation();
+                    $(this).find(".option").toggle();
+                    $(this).parent().siblings().find(".option").hide();
+                });
+                $(document).click(function (event) {
+                    var eo = $(event.target);
+                    if ($(".select_box").is(":visible") && eo.attr("class") != "option" && !eo.parent(".option").length)
+                        $('.option').hide();
+                });
+                $(".option li").click(function () {
+                    var check_value = $(this).text();
+                    var zlValue = $('.option li:eq(1)').html();
+                    var bqValue = $('.option li:eq(2)').html();
+                    $(this).parent().siblings(".select_txt").text(check_value);
+                    $("#select_value").val(check_value);
+                    if (check_value == zlValue) {
+                        $('#searchPlaceholder').prop('placeholder', '请输入用户电话');
+                    } else if (check_value == bqValue) {
+                        $('#searchPlaceholder').prop('placeholder', '请输入用户邮箱');
+                    } else {
+                        $('#searchPlaceholder').prop('placeholder', '请输入用户昵称');
+                    }
+                });
+            })
+        </script>
+
+        <!--        ---------------------------------------数据表格-------------------------------------------------
+        <script src="resources/layui/layui.js" charset="utf-8"></script> 
+        <script>
+            layui.use('table', function () {
+                var table = layui.table;
+
+                table.render({
+                    elem: '#test'
+                    , url: 'resources/users.json'
+                    , page: {//支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                                //,curr: 5 //设定初始在第 5 页
+                        , groups: 1 //只显示 1 个连续页码
+                        , first: false //不显示首页
+                        , last: false //不显示尾页
+
+                    }
+                    , cols: [[
+                            {field: 'uname', width: 100, title: '用户昵称'}
+                            , {field: 'usex', width: 80, title: '性别', sort: true}
+                            , {field: 'uphone', width: 80, title: '电话'}
+                            , {field: 'uemail', title: '邮箱', minWidth: 150}
+                            , {field: 'udate', width: 120, title: '出生日期', sort: true}
+                            , {field: 'upassword', width: 135, title: '密码'}
+                        ]]
+
+                });
+            });
+        </script>--> 
+
+
+        <!--        <script>
+                       form.on('submit(formDemoSearch)', function (data) {
+                            console.log(data);
+                            $.ajax({
+                                url: 'searchUserByName.do',
+                                type: 'post',
+                                contentType: 'application/json',
+                                data: JSON.stringify(data.field),
+                                success: function (msg) {
+                                    if (msg != null) {
+                                        layer.closeAll('loading');
+                                        layer.load(2);
+                                        layer.msg("修改成功", {icon: 6});
+                                        setTimeout(function () {
+                                            layer.closeAll();//关闭所有的弹出层
+                                            table.reload("Users");
+                                        }, 1000);
+                                        //加载层 - 风格
+                                    } else {
+                                        layer.msg("修改失败", {icon: 5});
+                                    }
+                                }
+                            })
+                            return false;
+                        })
+        
+                    
+                </script>
+        -->
+
+    </body>
+
 </html>
+
+
 
 
 

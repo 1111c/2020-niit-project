@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>项目主页</title>
+        <title>房屋租赁网主页</title>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 	<!-- 首页轮播图样式 -->
 	<link type="text/css" href="css/slider-pro.css" rel="stylesheet"> 
@@ -201,282 +201,143 @@
     </div>
 </div>
 
-<!-- 最新发布 -->
-<div id="newPublish" class="service-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="section-title text-center">
-                    <h2>最新发布</h2>
+        <div id="newPublish" class="service-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-title text-center">
+                            <h2>最新发布</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row newPublish">
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-wrap">
+                            <div class="service-img">
+                                <a href="detail.html">
+                                    <img src="pic/g7.jpg" alt="" data-no-retina="">
+                                </a>
+                                <ul>
+                                    <li>
+                                        <span class="rent " >今日推荐</span></li>
+                                     
+                                </ul>
+                            </div>
+                            <div class="service-content">
+                                <p>众安·青岛新城市</p>
+                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-wrap">
+                            <div class="service-img">
+                                <a href="detail.html">
+                                    <img src="pic/g4.jpg" alt="" data-no-retina="">
+                                </a>
+                                <ul>
+                                    <li>
+                                        <span class="rent">今日推荐</span>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                            <div class="service-content">
+                                <p>青岛海洋活力区融创中心</p>
+                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="service-wrap">
+                            <div class="service-img">
+                                <a href="detail.html">
+                                    <img src="pic/g6.jpg" alt="" data-no-retina="">
+                                </a>
+                                <ul>
+                                    <li>
+                                        <span class="rent">今日推荐</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="service-content">
+                                <p>中骏汇景城</p>
+                               
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
-        <div class="row newPublish">
-            <!-- <div class="col-lg-4 col-md-6 col-12">
-                <div class="service-wrap">
-                    <div class="service-img">
-                        <a href="detail.html">
-                            <img src="pic/2 - 副本.jpg" alt="" data-no-retina="">
-                        </a>
-                        <ul>
-                            <li>
-                                <span class="rent">For Rant</span>
-                            </li>
-                            <li>
-                                <p>$13,000 / <span>month</span></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="service-content">
-                        <h3>The Old Rectory</h3>
-                        <span>Little Havana / Miami</span>
-                        <p>There are many variations of passages of the Lorem Ipsum available .</p>
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <span><i class="fa fa-object-group"></i>100 ft2</span>
-                            </div>
-                            <div class="col-xs-7">
-                                <ul class="d-flex meta">
-                                    <li>3 <i class="fa fa-bed"></i></li>
-                                    <li>4 <i class="fa fa-bath"></i></li>
-                                    <li>6 <i class="fa fa-car"></i></li>
-                                </ul>
-                            </div>
+
+
+
+        <!-- 优秀房东们 -->
+        <div class="team-area bg-img-2" style="height: auto;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center section-title2">
+                            <h2>房东推荐</h2>
                         </div>
                     </div>
                 </div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-                <div class="service-wrap">
-                    <div class="service-img">
-                        <a href="detail.html">
-                            <img src="pic/3 - 副本.jpg" alt="" data-no-retina="">
-                        </a>
-                        <ul>
-                            <li>
-                                <span class="rent">For Rant</span>
-                            </li>
-                            <li>
-                                <p>$20,000 / <span>month</span></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="service-content">
-                        <h3>The Old School</h3>
-                        <span>Little Havana / Miami</span>
-                        <p>There are many variations of passages of the Lorem Ipsum available .</p>
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <span><i class="fa fa-object-group"></i>100 ft2</span>
-                            </div>
-                            <div class="col-xs-7">
-                                <ul class="d-flex meta">
-                                    <li>3 <i class="fa fa-bed"></i></li>
-                                    <li>4 <i class="fa fa-bath"></i></li>
-                                    <li>6 <i class="fa fa-car"></i></li>
-                                </ul>
+                <div id="recommend" class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="team-wrap">
+                            <div class="team-img">
+                                <a href="#">
+                                    <img class="userImg" src="pic/human13.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>  
+                            <div class="team-content">
+                                <p class="intro">
+                                   夏信远 新房顾问
+本盘带看1次 总成交15单
+4008313127-17356
+在线咨询 在线咨询</p>
+                               
                             </div>
                         </div>
+                    </div> 
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="team-wrap">
+                            <div class="team-img">
+                                <a href="#">
+                                    <img src="pic/human12.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="team-content">
+                                <p>滕宇 新房顾问
+本盘带看5次 总成交8单
+4008018622-61988
+在线咨询 在线咨询</p>
+                             
+                            </div>
+                        </div>
+
                     </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="team-wrap">
+                            <div class="team-img">
+                                <a href="#">
+                                    <img src="pic/human11.jpg" alt="" data-no-retina="">
+                                </a>
+                            </div>
+                            <div class="team-content">
+                                 <p>杨磊 新房顾问
+本盘带看2次 总成交2单
+4008313157-64503
+在线咨询 在线咨询</p>
+                              
+                            </div>
+                        </div>
+                    </div> 
                 </div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-                <div class="service-wrap">
-                    <div class="service-img">
-                        <a href="detail.html">
-                            <img src="pic/4 - 副本.jpg" alt="" data-no-retina="">
-                        </a>
-                        <ul>
-                            <li>
-                                <span class="rent">For Rant</span></li>
-                                <li>
-                                    <p>$15,000 / <span>month</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="service-content">
-                            <h3>The Old School</h3>
-                            <span>Little Havana / Miami</span>
-                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
-                                </div>
-                                <div class="col-xs-7">
-                                    <ul class="d-flex meta">
-                                        <li>3 <i class="fa fa-bed"></i></li>
-                                        <li>4 <i class="fa fa-bath"></i></li>
-                                        <li>6 <i class="fa fa-car"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-                    <div class="service-wrap">
-                        <div class="service-img">
-                            <a href="detail.html">
-                                <img src="pic/5 - 副本.jpg" alt="" data-no-retina="">
-                            </a>
-                            <ul>
-                                <li>
-                                    <span class="rent">For Rant</span>
-                                </li>
-                                <li>
-                                    <p>$12,000 / <span>month</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="service-content">
-                            <h3>The Hillside House</h3>
-                            <span>Little Havana / Miami</span>
-                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
-                                </div>
-                                <div class="col-xs-7">
-                                    <ul class="d-flex meta">
-                                        <li>3 <i class="fa fa-bed"></i></li>
-                                        <li>4 <i class="fa fa-bath"></i></li>
-                                        <li>6 <i class="fa fa-car"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-                    <div class="service-wrap">
-                        <div class="service-img">
-                            <a href="detail.html">
-                                <img src="pic/1 - 副本.jpg" alt="" data-no-retina="">
-                            </a>
-                            <ul>
-                                <li>
-                                    <span class="rent">For Rant</span>
-                                </li>
-                                <li>
-                                    <p>$5,000 / <span>month</span></p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="service-content">
-                            <h3>The Holly Cottage</h3>
-                            <span>Little Havana / Miami</span>
-                            <p>There are many variations of passages of the Lorem Ipsum available .</p>
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <span><i class="fa fa-object-group"></i>100 ft2</span>
-                                </div>
-                                <div class="col-xs-7">
-                                    <ul class="d-flex meta">
-                                        <li>3 <i class="fa fa-bed"></i></li>
-                                        <li>4 <i class="fa fa-bath"></i></li>
-                                        <li>6 <i class="fa fa-car"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					</div> -->
+            </div>
         </div>
-        </div>
-    </div>
-
-
-
-<!-- 优秀房东们 -->
-<div class="team-area bg-img-2" style="height: auto;">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-					<div class="section-title text-center section-title2">
-                        <h2>房东推荐</h2>
-					</div>
-			</div>
-		</div>
-			<div id="recommend" class="row">
-					<!-- <div class="col-lg-4 col-sm-6 col-xs-12">
-							<div class="team-wrap">
-									<div class="team-img">
-											<a href="Landlord.html">
-													<img class="userImg" src="pic/human01.png" alt="" data-no-retina="">
-											</a>
-									</div>  
-									<div class="team-content">
-											<h3 class="landlordName">John Silver</h3>
-											<span>Founder &amp; CEO</span>
-											<p class="intro">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-											<ul class="d-flex socil-icon">
-													<li>
-															<a href="#"><i class="fa fa-facebook"></i></a>
-													</li>
-													<li>
-															<a href="#"><i class="fa fa-twitter"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-linkedin"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-google-plus"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-vimeo"></i></a>
-													</li>
-											</ul>
-									</div>
-							</div>
-					</div> -->
-					<!-- <div class="col-lg-4 col-sm-6 col-xs-12">
-							<div class="team-wrap">
-									<div class="team-img">
-											<a href="Landlord.html">
-													<img src="pic/human02.png" alt="" data-no-retina="">
-											</a>
-									</div>
-									<div class="team-content">
-											<h3>Janet Richmond</h3>
-											<span>Founder &amp; CEO</span>
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-											<ul class="d-flex socil-icon">
-													<li>
-															<a href="#"><i class="fa fa-facebook"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-twitter"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-linkedin"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-google-plus"></i></a>
-													</li>
-													<li><a href="#"><i class="fa fa-vimeo"></i></a>
-													</li>
-											</ul>
-									</div>
-							</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 col-xs-12">
-							<div class="team-wrap">
-									<div class="team-img">
-											<a href="Landlord.html">
-													<img src="pic/human03.png" alt="" data-no-retina="">
-											</a>
-									</div>
-									<div class="team-content">
-											<h3>Andrew Man</h3>
-											<span>Founder &amp; CEO</span>
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-											<ul class="d-flex socil-icon">
-													<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-													<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-													<li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-											</ul>
-									</div>
-							</div>
-					</div> -->
-			</div>
-	</div>
-</div>
 
 <!-- 页尾 -->
 <div class="footer-area">

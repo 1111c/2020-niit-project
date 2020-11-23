@@ -1,0 +1,172 @@
+@CHARSET "UTF-8";
+
+/*****************鎼滅储妗�****************/
+#search_land {
+	width:100%;
+	height: 80px;
+	background-color:#DDD;
+}
+
+#search_land #search{
+	position: absolute;		/*娣诲姞浜哸bsolute缁濆浣嶇疆锛岄偅涔坉iv灏变細榛樿鏄剧ず鍦╠iv鐣岄潰鐨勭涓�锛岄櫎闈炴寚瀹氫綅缃*/
+	margin: 18px 10%; 		/*auto璁剧疆浜哾iv灞呬腑*/
+	z-index: 101;
+	width: 50%;
+	height: 44px;
+	border: 2px;
+	background-color: #fff;
+	border:1px solid #DDD;
+}
+/*****************鎼滅储妗唀nd*****************/
+
+
+/*璇︽儏灞曠ず椤电殑css*/
+.detail {
+	width:100%;
+	min-height:3000px;
+	/* background-color:#EEE; */
+}
+
+.brief {
+	width:80%;
+	min-height:520px;
+	margin-left:auto;
+	margin-right:auto;
+	/* background-color:red; */
+}
+
+.title {
+	width:100%;
+	min-height:60px;
+	line-height: 60px; 
+	color:#222;
+	font-size:28px;
+	font-weigth:bold;
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+.brief .showimg {
+	width:44%;
+	min-height:450px;
+	background-color:none;
+	float:left;
+}
+
+.brief .information {
+	width:56%;
+	min-height:450px;
+	/* display:inline-block; */
+	/* background-color:blue; */
+	float:right;
+}
+
+.information p {
+	width: 100%;
+	min-height:60px;/* 
+	background-color:green; */
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+.information p label {
+	line-height:60px;
+	color:#666;
+	/* font-weight:bold; */
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+.information p .boldText {
+	line-height:60px;
+	left:10px;
+	color:rgb(255,102,0);
+	font-size:28px;
+	font-weigth:bold;
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+.information p #payType {
+	line-height:60px;
+	left:20px;
+	color:#222;
+	font-size:16px;
+}
+
+.information p #payDetail {
+	line-height:60px;
+	left:20px;
+	color:#222;
+	font-size:16px;
+}
+
+
+.information p span {
+	width: 16%;
+	height: 36px;
+	margin: 17px 10px;
+	/* float:left; */
+	line-height: 36px; /*鍗曡鏂囧瓧灞呬腑*/
+	color:#222;
+	font-size:18px;
+	font-weigth:bold;
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+.information p span a {
+	color:#000;
+	text-decoration: none;
+}
+
+.information p span a:hover {
+	color: rgb(255,102,0);
+	text-decoration: underline;
+}
+
+
+/*房源描述fangyuanmiaoshu*/
+
+.descript {
+	width:80%;
+	min-height:300px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.descript span {
+	height:60px;
+	line-height:60px;
+}
+
+.descript .sourceDes {
+	line-height:50px;
+	margin:20px 50px auto 50px;
+	color:#222;
+	font-size:16px;
+	font-family: "lato-regular", Helvetica, Arial, sans-serif;
+}
+
+
+.images {
+	width:80%;
+	min-height:1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.images img {
+	width:50%;
+	height:500px;
+	margin-left:25%;
+}
+
+.m {
+	width:80%;
+	min-height:570px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.m #container {
+	width:80%;
+	min-height:500px;
+	margin: 10px auto;
+}
+
