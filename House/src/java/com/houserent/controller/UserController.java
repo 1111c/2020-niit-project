@@ -138,8 +138,7 @@ public class UserController {
         //用json来传值
         JSONArray json = JSONArray.fromObject(uulist);
         String js = json.toString();
-        System.out.println(js);
-        //*****转为layui需要的json格式，必须要这一步，博主也是没写这一步，在页面上数据就是数据接口异常
+        System.out.println(js); 
         String jso = "{\"code\":0,\"msg\":\"\",\"count\":" + count + ",\"data\":" + js + "}";
         return jso;
     }
@@ -165,6 +164,7 @@ public class UserController {
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("UName", user.getUName());
         request.getSession().setAttribute("UImage", user.getUPicture());
+        request.getSession().setAttribute("UPhone", user.getUPhone());
 
         model.addAttribute("status", status);
         //model.addAttribute("request", request);

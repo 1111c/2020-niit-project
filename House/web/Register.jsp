@@ -26,7 +26,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户昵称</label>
                                     <div class="layui-input-block">
-                                        <input id="txtNickName2" type="text" name="UName" required  lay-verify="required" placeholder="请输入中介昵称" autocomplete="off" class="layui-input">
+                                        <input id="txtNickName2" type="text" name="UName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                                     </div>
                                     <span id="NickNameMsg2" class="layui-input-block">
 
